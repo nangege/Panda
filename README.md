@@ -10,14 +10,14 @@ Panda is combined by 3 different component:
 3. [Panda](https://github.com/nangege/Layoutable). Asynchronous display node.
 
 ## Why Panda
-When it comes to  asynchronous render,many developr will think about [Texture](https://github.com/texturegroup/texture/), In facet, Panda learned a lot from [Texture](https://github.com/texturegroup/texture/), Panda's render process can be seen as a simplfy version of [Texture](https://github.com/texturegroup/texture/). But Panda does have it's advantages.Panda use 'Autolayout' for frame caculating which make it easy to learn compared to Texture's Flexbox.Panda is lightweighted and is more similit to syste's API,it just cost a little to integration. So,if you like swift,like autolayout ,want a high fps tableview and do't want to cost too much,Panda is for you. 
+When it comes to  asynchronous render,many developr will think about [Texture](https://github.com/texturegroup/texture/), In facet, Panda learned a lot from [Texture](https://github.com/texturegroup/texture/), Panda's render process can be seen as a simplfy version of [Texture](https://github.com/texturegroup/texture/). But Panda does have it's advantages.Panda use 'Autolayout' for frame caculating which make it easy to learn compared to Texture's Flexbox.Panda is more lightweighted and usag is more close to system's API,it just cost little to integration. So,if you like swift,like autolayout ,want a high fps tableview and do't want to cost too much,Panda is for you. 
 
 
 ## Feature
 - [x] Asynchronous render view
 - [x] Autolayout Similar API with background thread usage ability
-- [x] Comparable with existing UIView subview
-- [x] Pure swift implemen
+- [x] Comparable with existing UIView subclass
+- [x] Pure swift implement
 
 ## Requirements
 - iOS 8.0+
