@@ -61,7 +61,7 @@ final class Transaction{
     let activity: CFRunLoopActivity = [.beforeWaiting,.exit]
     var mutableSelf = Transaction.self
     var context = CFRunLoopObserverContext(version: 0, info: &mutableSelf, retain: nil, release: nil, copyDescription: nil)
-    let observer =  CFRunLoopObserverCreate(kCFAllocatorDefault, activity.rawValue, true, Int.max, { (observer, activity, _) in
+    let observer =  CFRunLoopObserverCreate(kCFAllocatorDefault, activity.rawValue, true, 0, { (observer, activity, _) in
       
       synchronized(lock: Transaction.observerSet){
         if Transaction.observerSet.count == 0{
