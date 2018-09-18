@@ -9,6 +9,7 @@
 import Foundation
 
 extension CGSize{
+  /// scale self and keep aspectRatio to fite size
   public func fitted(to size: CGSize) -> CGSize {
     let aspectWidth = round(aspectRatio * size.height)
     let aspectHeight = round(size.width / aspectRatio)
@@ -16,7 +17,7 @@ extension CGSize{
     return aspectWidth > size.width ? CGSize(width: size.width, height: aspectHeight) : CGSize(width: aspectWidth, height: size.height)
   }
   
-  
+  /// scale self keep aspectRatio to fill size
   public func filling(with size: CGSize) -> CGSize {
     let aspectWidth = round(aspectRatio * size.height)
     let aspectHeight = round(size.width / aspectRatio)
@@ -41,8 +42,15 @@ extension CGSize{
 
 extension CGRect{
   
-  func constraint(lhs: CGSize, rhs: CGSize,space: CGFloat,contentSize: CGSize ) -> (CGRect, CGRect){
-    
+  /// layout two item with size lhs and rhs horizontal, equal centerX
+  ///
+  /// - Parameters:
+  ///   - lhs: item in left
+  ///   - rhs: item in right
+  ///   - space: space between lhs and rhs item
+  /// - Returns: rect for lhs and rhs item
+  func constraint(lhs: CGSize, rhs: CGSize,space: CGFloat) -> (CGRect, CGRect){
+    let contentSize = lhs.combineTo(rhs, space: space, isVertical: false)
     let x = (size.width - contentSize.width)/2
     let y = (height - lhs.height)/2
     
@@ -62,8 +70,15 @@ extension CGRect{
     return (lhsRect.pixelRounded, rhsRect.pixelRounded)
   }
   
-  func constraint(ths: CGSize, bhs: CGSize, space: CGFloat, contentSize: CGSize) -> (CGRect, CGRect){
-    
+  /// layout two item with size ths and bhs vertical , equal centerY
+  ///
+  /// - Parameters:
+  ///   - ths: item in top
+  ///   - bhs: item in bottom
+  ///   - space: space between ths and bhs item
+  /// - Returns: rect for ths and bhs item
+  func constraint(ths: CGSize, bhs: CGSize, space: CGFloat) -> (CGRect, CGRect){
+    let contentSize = ths.combineTo(bhs, space: space, isVertical: true)
     let x = (width - ths.width)/2
     let y = (height - contentSize.height)/2
     let thsRect = CGRect(origin: CGPoint(x: x, y: y), size: ths)
@@ -80,6 +95,14 @@ extension CGRect{
 }
 
 extension CGSize{
+  
+  /// caculate the best size to hold two size
+  ///
+  /// - Parameters:
+  ///   - other: another size to contain
+  ///   - space: space between two item
+  ///   - isVertical: layout vertical or horizontal
+  /// - Returns: the best size to hold self and other size
   func combineTo(_ other: CGSize,space: CGFloat,isVertical: Bool = false) -> CGSize{
     var size = CGSize.zero
     if !isVertical{
@@ -102,6 +125,8 @@ extension CGSize{
 }
 
 extension CGFloat{
+  
+  /// adjust to fit pixel
   var pixelRounded: CGFloat{
     let scale = UIScreen.main.scale
     return ceil(self*scale)/scale
@@ -109,6 +134,8 @@ extension CGFloat{
 }
 
 extension CGRect{
+  
+  /// adjust to fit pixel
   var pixelRounded: CGRect{
     return CGRect(x: minX.pixelRounded,
                   y: minY.pixelRounded,

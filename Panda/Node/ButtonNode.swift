@@ -185,15 +185,13 @@ open class ButtonNode: ControlNode{
     if textFirst{
       let rect = bounds.constraint(lhs: textSize,
                                    rhs: imageSize,
-                                   space: space,
-                                   contentSize: intrinsicContentSize)
+                                   space: space)
       textNode.frame = rect.0
       imageNode.frame = rect.1
     }else{
       let rect = bounds.constraint(lhs: imageSize,
                                    rhs: textSize,
-                                   space: space,
-                                   contentSize: intrinsicContentSize)
+                                   space: space)
       textNode.frame = rect.1
       imageNode.frame = rect.0
     }
@@ -206,15 +204,13 @@ open class ButtonNode: ControlNode{
     if textFirst{
       let rects = bounds.constraint(ths: textSize,
                                     bhs: imageSize,
-                                    space: space,
-                                    contentSize: intrinsicContentSize)
+                                    space: space)
       textNode.frame = rects.0
       imageNode.frame = rects.1
     }else{
       let rects = bounds.constraint(ths: imageSize,
                                     bhs: textSize,
-                                    space: space,
-                                    contentSize: intrinsicContentSize)
+                                    space: space)
       textNode.frame = rects.1
       imageNode.frame = rects.0
     }
