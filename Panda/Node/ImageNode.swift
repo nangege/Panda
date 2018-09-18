@@ -38,7 +38,7 @@ public enum ContentMode{
   case scaleAspectToFill
 }
 
-open class ImageNode: ViewNode {
+open class ImageNode: ControlNode {
   
   public var image: UIImage?{
     didSet{

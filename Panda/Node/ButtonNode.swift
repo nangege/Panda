@@ -93,6 +93,7 @@ open class ButtonNode: ControlNode{
   
   public override init() {
     super.init()
+    userInteractionEnabled = true
     addSubnode(backgroundImageNode)
     addSubnode(textNode)
     addSubnode(imageNode)

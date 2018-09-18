@@ -32,7 +32,7 @@
 
 import UIKit
 
-public class TextNode: ViewNode {
+public class TextNode: ControlNode {
   
   public var text: String = ""{
     didSet{

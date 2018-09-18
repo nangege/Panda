@@ -59,6 +59,11 @@ open class ControlNode: ViewNode{
     return bounds.inset(by: hitTestSlop).insetBy(dx: -70, dy: -70)
   }
   
+  public override init() {
+    super.init()
+    userInteractionEnabled = false
+  }
+  
   // subclass override point.determin where to start track touch
   open func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool{
     return true
@@ -85,6 +90,17 @@ open class ControlNode: ViewNode{
         eventActionTable[event] = action
       }
     }
+    updateUserInteraction()
+  }
+  
+  open func removeAction(for controlEvents: UIControl.Event){
+    let events: [UIControl.Event] = [.touchDown,.touchCancel,.touchUpInside,.touchUpOutside,.touchDragInside,.touchDragOutside]
+    for event in events{
+      if controlEvents.contains(event){
+        eventActionTable.removeValue(forKey: event)
+      }
+    }
+    updateUserInteraction()
   }
   
   // send all actions associated with events
@@ -173,6 +189,10 @@ open class ControlNode: ViewNode{
     highlighted = false
     touchInside = false
     sendActions(for: .touchCancel, with: event)
+  }
+  
+  private func updateUserInteraction(){
+    userInteractionEnabled = eventActionTable.count > 0
   }
   
 }
