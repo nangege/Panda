@@ -37,26 +37,27 @@ import UIKit
 open class LayoutNode<T: UIView>: ViewNode {
   
   public typealias ViewGenerator = ()->(T)
+  public typealias SizeGenerator = () -> CGSize
   
   public init(viewGenerator: @escaping ViewGenerator) {
     self.viewGenerator = viewGenerator
     super.init()
-    visiable = false
   }
   
   private let viewGenerator: ViewGenerator
   private(set) lazy var viewHolder = self.viewGenerator()
+  
   public override var view: UIView{
     return viewHolder
   }
   
-  var size = CGSize.zero{
-    didSet{
-      invalidateIntrinsicContentSize()
-    }
+  public var sizeGenerator: SizeGenerator = {
+    return CGSize(width: UIView.noIntrinsicMetric,
+                  height: UIView.noIntrinsicMetric)
   }
-
-  func intrinsicContentSize() -> CGSize {
-    return size
+  
+  public override var intrinsicContentSize: CGSize{
+    return sizeGenerator()
   }
+  
 }

@@ -40,8 +40,6 @@ open class ViewNode: Layoutable {
   
   open private(set) var subnodes = [ViewNode]()
   
-  open var visiable = true
-  
   open var userInteractionEnabled = true
   
   open var backgroundColor: UIColor = .clear{
