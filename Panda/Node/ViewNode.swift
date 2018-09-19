@@ -60,7 +60,7 @@ open class ViewNode: Layoutable {
     }
   }
   
-  var borderColor = UIColor.clear{
+  open var borderColor = UIColor.clear{
     didSet{
       if oldValue != borderColor{
         commitUpdate()
@@ -68,7 +68,7 @@ open class ViewNode: Layoutable {
     }
   }
   
-  var borderWidth: CGFloat = 0{
+  open var borderWidth: CGFloat = 0{
     didSet{
       if oldValue != borderWidth{
         commitUpdate()
@@ -76,7 +76,7 @@ open class ViewNode: Layoutable {
     }
   }
   
-  var cornerRadius: CGFloat = 0{
+  open var cornerRadius: CGFloat = 0{
     didSet{
       if oldValue != cornerRadius{
         commitUpdate()
