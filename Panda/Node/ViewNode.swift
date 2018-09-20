@@ -188,7 +188,7 @@ open class ViewNode: Layoutable {
     }
     
     if layerNeedsDisplay{
-      layer.setNeedsDisplay()
+      layer.display()
       layerNeedsDisplay = false
     }
   }
