@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Layoutable
 
 extension CGSize{
   /// scale self and keep aspectRatio to fite size
@@ -49,7 +50,7 @@ extension CGRect{
   ///   - rhs: item in right
   ///   - space: space between lhs and rhs item
   /// - Returns: rect for lhs and rhs item
-  func constraint(lhs: CGSize, rhs: CGSize,space: CGFloat) -> (CGRect, CGRect){
+  public func constraint(lhs: CGSize, rhs: CGSize,space: CGFloat) -> (CGRect, CGRect){
     let contentSize = lhs.combineTo(rhs, space: space, isVertical: false)
     let x = (size.width - contentSize.width)/2
     let y = (height - lhs.height)/2
@@ -77,7 +78,7 @@ extension CGRect{
   ///   - bhs: item in bottom
   ///   - space: space between ths and bhs item
   /// - Returns: rect for ths and bhs item
-  func constraint(ths: CGSize, bhs: CGSize, space: CGFloat) -> (CGRect, CGRect){
+  public func constraint(ths: CGSize, bhs: CGSize, space: CGFloat) -> (CGRect, CGRect){
     let contentSize = ths.combineTo(bhs, space: space, isVertical: true)
     let x = (width - ths.width)/2
     let y = (height - contentSize.height)/2
@@ -103,7 +104,7 @@ extension CGSize{
   ///   - space: space between two item
   ///   - isVertical: layout vertical or horizontal
   /// - Returns: the best size to hold self and other size
-  func combineTo(_ other: CGSize,space: CGFloat,isVertical: Bool = false) -> CGSize{
+  public func combineTo(_ other: CGSize,space: CGFloat,isVertical: Bool = false) -> CGSize{
     var size = CGSize.zero
     if !isVertical{
       size.width = width + space + other.width
@@ -122,12 +123,26 @@ extension CGSize{
     }
     return size
   }
+  
+  public var tupleSize: Size{
+    return (Double(width),Double(height))
+  }
+  
+  public init(_ size: Size){
+    self.init(width: size.width, height: size.height)
+  }
+}
+
+extension CGPoint{
+  public var tuplePoint: Point{
+    return (Double(x),Double(y))
+  }
 }
 
 extension CGFloat{
   
   /// adjust to fit pixel
-  var pixelRounded: CGFloat{
+  public var pixelRounded: CGFloat{
     let scale = UIScreen.main.scale
     return ceil(self*scale)/scale
   }
@@ -135,13 +150,23 @@ extension CGFloat{
 
 extension CGRect{
   
+  public init(_ rect: Rect) {
+    self.init(x: rect.origin.x, y: rect.origin.y,
+              width: rect.size.width, height: rect.size.height)
+  }
+  
   /// adjust to fit pixel
-  var pixelRounded: CGRect{
+  public var pixelRounded: CGRect{
     return CGRect(x: minX.pixelRounded,
                   y: minY.pixelRounded,
               width: width.pixelRounded,
              height: height.pixelRounded)
   }
+  
+  public var tupleRect: Rect{
+    return (origin.tuplePoint,size.tupleSize)
+  }
+
 }
 
 

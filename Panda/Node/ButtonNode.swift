@@ -142,31 +142,31 @@ open class ButtonNode: ControlNode{
     updateForState()
   }
   
-  override public func layoutSubnode() {
+  override public func layoutSubItems() {
     backgroundImageNode.frame = bounds
     updateButtonLayout()
   }
   
-  override public var intrinsicContentSize: CGSize{
+  override public var itemIntrinsicContentSize: Size{
     let title = titleState.value(for: currentState)
     let image = imageState.value(for: currentState)
     let backgroundImage = backgroundImageState.value(for: currentState)
     
     // no title,use Image size as it's contentSize
     if title != nil{
-      let titleSize = textNode.intrinsicContentSize
-      let imageSize = imageNode.intrinsicContentSize
+      let titleSize = CGSize(textNode.itemIntrinsicContentSize)
+      let imageSize = CGSize(imageNode.itemIntrinsicContentSize)
       
-      return titleSize.combineTo(imageSize, space: space, isVertical: layoutAxis == .vertical)
+      return titleSize.combineTo(imageSize, space: space, isVertical: layoutAxis == .vertical).tupleSize
       
     }else{
       if let backgroundImage = backgroundImage{
-        return backgroundImage.size
+        return backgroundImage.size.tupleSize
       }else if let image = image{
-        return image.size
+        return image.size.tupleSize
       }
     }
-    return .zero
+    return SizeZero
   }
   
   func updateButtonLayout() {

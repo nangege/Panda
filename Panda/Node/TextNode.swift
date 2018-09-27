@@ -31,6 +31,7 @@
 /// THE SOFTWARE.
 
 import UIKit
+import Layoutable
 
 public class TextNode: ControlNode {
   
@@ -84,29 +85,29 @@ public class TextNode: ControlNode {
   
   private var useAttributeText = false
   
-  override public var intrinsicContentSize: CGSize{
+  override public var itemIntrinsicContentSize: Size{
     
     if textAttributes.attributeString.length == 0{
-      return .zero
+      return SizeZero
     }
     
     let maxWidth = CGFloat.infinity
     let size = CGSize(width: maxWidth, height: .infinity)
     
     let textRender = render(for: CGRect(origin: .zero, size: size))
-    return textRender.size
+    return textRender.size.tupleSize
   }
   
-  public override func contentSizeFor(maxWidth: CGFloat) -> CGSize {
+  public override func contentSizeFor(maxWidth: Double) -> Size {
     // need optimize
-    let textSize = intrinsicContentSize
+    let textSize = itemIntrinsicContentSize
     if textSize.width <= maxWidth || numberOfLines == 1{
-      return .zero
+      return SizeZero
     }
     
     let size = CGSize(width: maxWidth, height: .infinity)
     
-    return render(for: CGRect(origin: .zero, size: size)).size
+    return render(for: CGRect(origin: .zero, size: size)).size.tupleSize
   }
   
   override public func drawContent(in context: CGContext) {

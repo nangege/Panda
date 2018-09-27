@@ -35,7 +35,7 @@ import Cassowary
 import Layoutable
 
 open class ViewNode: Layoutable {
-  
+
   open private(set) weak var superNode: ViewNode?
   
   open private(set) var subnodes = [ViewNode]()
@@ -87,7 +87,7 @@ open class ViewNode: Layoutable {
       if oldValue != frame{
         frameDidUpdate = true
         setNeedsDisplay()
-        layoutSubnode()
+        layoutSubItems()
       }
     }
   }
@@ -144,11 +144,11 @@ open class ViewNode: Layoutable {
   public init(){}
   
   open func sizeToFit(){
-    frame = CGRect(origin: frame.origin, size: intrinsicContentSize)
+    frame = CGRect(origin: frame.origin, size: CGSize(itemIntrinsicContentSize))
   }
   
   open func sizeThatFit(_ size: CGSize) -> CGSize{
-    return intrinsicContentSize.constrainted(to: size)
+    return CGSize(itemIntrinsicContentSize).constrainted(to: size)
   }
   
   open func setNeedsDisplay(){
@@ -197,9 +197,18 @@ open class ViewNode: Layoutable {
     layoutIfEnabled()
   }
   
-  public var intrinsicContentSize: CGSize{
-    return CGSize(width: UIView.noIntrinsicMetric,
-                  height: UIView.noIntrinsicMetric)
+  public var layoutRect: Rect{
+    set{
+      frame = CGRect(newValue).pixelRounded
+    }
+    
+    get{
+      return frame.tupleRect
+    }
+  }
+  
+  public var itemIntrinsicContentSize: Size{
+    return InvaidIntrinsicSize
   }
   
   // Overrde this method to provide custom drawing Content
@@ -278,15 +287,15 @@ open class ViewNode: Layoutable {
     return subnodes
   }
   
-  public var manager =  LayoutManager()
+  public lazy var manager =  LayoutManager(self)
 
-  public func contentSizeFor(maxWidth: CGFloat) -> CGSize {
-    return .zero
+  public func contentSizeFor(maxWidth: Double) -> Size {
+    return InvaidIntrinsicSize
   }
   
   public func updateConstraint() {}
   
-  public func layoutSubnode() {}
+  public func layoutSubItems() {}
   
 // delegate for AsyncDisplayLayer
 // provide contents for CALayer asynchronously

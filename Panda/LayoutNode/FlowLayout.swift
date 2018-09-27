@@ -32,6 +32,7 @@
 /// THE SOFTWARE.
 
 import UIKit
+import Layoutable
 
 // layout subviews，no need to care about layout detail
 // if itemWidth and itemWidth is set ,adjust SNFlowLayoutView contentSize
@@ -97,7 +98,7 @@ open class FlowLayoutNode: ViewNode {
     invalidateIntrinsicContentSize()
   }
   
-  override public func layoutSubnode() {
+  override public func layoutSubItems() {
     guard validNode.count > 0 ,columnCount > 0 else { return }
 
     let size = itemSize(for: bounds.size)
@@ -142,18 +143,18 @@ open class FlowLayoutNode: ViewNode {
     return CGSize(width: width, height: height)
   }
   
-  public override  var intrinsicContentSize: CGSize{
-    guard validNode.count > 0,columnCount > 0 else { return .zero }
+  public override  var itemIntrinsicContentSize: Size{
+    guard validNode.count > 0,columnCount > 0 else { return SizeZero }
     let size = itemSize(for: bounds.size)
     
-    return contenSizeForItemSize(size)
+    return contenSizeForItemSize(size).tupleSize
   }
   
-  public override func contentSizeFor(maxWidth: CGFloat) -> CGSize {
-    guard validNode.count > 0,columnCount > 0 else { return .zero }
-    let size = itemSize(for: CGSize(width: maxWidth, height: bounds.height))
+  public override func contentSizeFor(maxWidth: Double) -> Size {
+    guard validNode.count > 0,columnCount > 0 else { return SizeZero }
+    let size = itemSize(for: CGSize(width: CGFloat(maxWidth), height: bounds.height))
     
-    return contenSizeForItemSize(size)
+    return contenSizeForItemSize(size).tupleSize
   }
   
   private func contenSizeForItemSize(_ size: CGSize) -> CGSize{

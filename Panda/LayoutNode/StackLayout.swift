@@ -92,7 +92,7 @@ open class StackLayoutNode: ViewNode{
     }
   }
   
-  public var space: CGFloat = 4{
+  public var space: Double = 4{
     didSet{
       distributionArrangement.space = space
       setNeedUpdateConstraint()
@@ -164,7 +164,7 @@ class StackLayoutArrangement{
   var axis: LayoutAxis = .horizontal
   var items = [ViewNode]()
   var canvasConstraint = [LayoutConstraint]()
-  var space: CGFloat = 4
+  var space: Double = 4
   
   weak var canvas: ViewNode?
   
@@ -302,10 +302,10 @@ class StackLayoutDistributionArrangement: StackLayoutArrangement{
   func resetFillEffect(){
     
     (items as [Layoutable]).traverse { (preNode, currentNode) -> (LayoutConstraint) in
-      var multiply: CGFloat = 1
+      var multiply: Double = 1
       if distribution == .fillProportionally{
-        let size1 = preNode.intrinsicContentSize
-        let size2 = currentNode.intrinsicContentSize
+        let size1 = preNode.itemIntrinsicContentSize
+        let size2 = currentNode.itemIntrinsicContentSize
         switch axis{
         case .horizontal:
           multiply = size2.width / size1.width

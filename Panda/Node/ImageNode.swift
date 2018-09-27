@@ -31,6 +31,7 @@
 /// THE SOFTWARE.
 
 import UIKit
+import Layoutable
 
 public enum ContentMode{
   case scaleToFill
@@ -59,11 +60,11 @@ open class ImageNode: ControlNode {
     }
   }
   
-  override public var intrinsicContentSize: CGSize{
+  override public var itemIntrinsicContentSize: Size{
     if let image = image {
-      return image.size
+      return image.size.tupleSize
     }
-    return .zero
+    return SizeZero
   }
   
   override func contentForLayer(_ layer: AsyncDisplayLayer, isCancel: () -> Bool) -> UIImage? {

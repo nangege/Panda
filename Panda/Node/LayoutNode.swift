@@ -32,6 +32,7 @@
 /// THE SOFTWARE.
 
 import UIKit
+import Layoutable
 
 // used as a placeholder node for view
 open class LayoutNode<T: UIView>: ViewNode {
@@ -56,8 +57,8 @@ open class LayoutNode<T: UIView>: ViewNode {
                   height: UIView.noIntrinsicMetric)
   }
   
-  public override var intrinsicContentSize: CGSize{
-    return sizeGenerator()
+  public override var itemIntrinsicContentSize: Size{
+    return sizeGenerator().tupleSize
   }
   
 }
