@@ -157,10 +157,10 @@ extension CGRect{
   
   /// adjust to fit pixel
   public var pixelRounded: CGRect{
-    return CGRect(x: minX.pixelRounded,
-                  y: minY.pixelRounded,
-              width: width.pixelRounded,
-             height: height.pixelRounded)
+    return CGRect(x: origin.x.pixelRounded,
+                  y: origin.y.pixelRounded,
+              width: size.width.pixelRounded,
+             height: size.height.pixelRounded)
   }
   
   public var tupleRect: Rect{
