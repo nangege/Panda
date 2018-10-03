@@ -228,6 +228,7 @@ open class ViewNode: Layoutable {
     if let index = subnodes.index(of: node){
       node.superNode = nil
       subnodes.remove(at: index)
+      recursivelyReset(from: node)
       if node.isInHierarchy{
         node.view.removeFromSuperview()
       }

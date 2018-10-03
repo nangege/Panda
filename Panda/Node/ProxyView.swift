@@ -33,7 +33,6 @@
 
 import UIKit
 
-
 /// ProxyView for ViewNode, forward gesture event to ViewNode
 class ProxyView: UIView{
 

@@ -11,8 +11,9 @@
 		3806BA1E214FB41F00D6981F /* Layoutable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3806BA1C214FB41F00D6981F /* Layoutable.framework */; };
 		385873C1214A141C001476CE /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385873C0214A141C001476CE /* ImageProcessor.swift */; };
 		385873C4214BDDE3001476CE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385873C3214BDDE3001476CE /* Extension.swift */; };
+		38BA7A372164312B00FD0ACB /* UIKitLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA7A362164312B00FD0ACB /* UIKitLayout.swift */; };
+		38BA7A3F216441DB00FD0ACB /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA7A3E216441DB00FD0ACB /* PerformanceTests.swift */; };
 		38C106162139977200993530 /* Panda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C1060C2139977200993530 /* Panda.framework */; };
-		38C1061B2139977200993530 /* PandaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1061A2139977200993530 /* PandaTests.swift */; };
 		38C1061D2139977200993530 /* Panda.h in Headers */ = {isa = PBXBuildFile; fileRef = 38C1060F2139977200993530 /* Panda.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38C10670213997E600993530 /* ImageRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1065C213997E600993530 /* ImageRender.swift */; };
 		38C10671213997E600993530 /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1065E213997E600993530 /* TextAttributes.swift */; };
@@ -47,11 +48,12 @@
 		385873C0214A141C001476CE /* ImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		385873C3214BDDE3001476CE /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		38598AC6213F4B7B00914DEB /* Layoutable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Layoutable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38BA7A362164312B00FD0ACB /* UIKitLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitLayout.swift; sourceTree = "<group>"; };
+		38BA7A3E216441DB00FD0ACB /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		38C1060C2139977200993530 /* Panda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Panda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38C1060F2139977200993530 /* Panda.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Panda.h; sourceTree = "<group>"; };
 		38C106102139977200993530 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38C106152139977200993530 /* PandaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PandaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		38C1061A2139977200993530 /* PandaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PandaTests.swift; sourceTree = "<group>"; };
 		38C1061C2139977200993530 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38C1065C213997E600993530 /* ImageRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRender.swift; sourceTree = "<group>"; };
 		38C1065E213997E600993530 /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		385873C2214BDDB4001476CE /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				38BA7A362164312B00FD0ACB /* UIKitLayout.swift */,
 				385873C3214BDDE3001476CE /* Extension.swift */,
 			);
 			path = Helper;
@@ -124,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				385873C2214BDDB4001476CE /* Helper */,
-				38C1066D213997E600993530 /* LayoutNode */,
+				38C1066D213997E600993530 /* Layout */,
 				38C10661213997E600993530 /* Node */,
 				38C1065A213997E600993530 /* Render */,
 				38C1060F2139977200993530 /* Panda.h */,
@@ -136,7 +139,7 @@
 		38C106192139977200993530 /* PandaTests */ = {
 			isa = PBXGroup;
 			children = (
-				38C1061A2139977200993530 /* PandaTests.swift */,
+				38BA7A3E216441DB00FD0ACB /* PerformanceTests.swift */,
 				38C1061C2139977200993530 /* Info.plist */,
 			);
 			path = PandaTests;
@@ -186,13 +189,13 @@
 			path = Node;
 			sourceTree = "<group>";
 		};
-		38C1066D213997E600993530 /* LayoutNode */ = {
+		38C1066D213997E600993530 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
 				38C1066E213997E600993530 /* StackLayout.swift */,
 				38C1066F213997E600993530 /* FlowLayout.swift */,
 			);
-			path = LayoutNode;
+			path = Layout;
 			sourceTree = "<group>";
 		};
 		38C106832139994000993530 /* Frameworks */ = {
@@ -327,6 +330,7 @@
 				38C10671213997E600993530 /* TextAttributes.swift in Sources */,
 				385873C4214BDDE3001476CE /* Extension.swift in Sources */,
 				38C10676213997E600993530 /* LayoutNode.swift in Sources */,
+				38BA7A372164312B00FD0ACB /* UIKitLayout.swift in Sources */,
 				38C1067E213997E600993530 /* StackLayout.swift in Sources */,
 				38C10678213997E600993530 /* AsyncDisplayLayer.swift in Sources */,
 				38C10679213997E600993530 /* TextNode.swift in Sources */,
@@ -339,7 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38C1061B2139977200993530 /* PandaTests.swift in Sources */,
+				38BA7A3F216441DB00FD0ACB /* PerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -464,7 +468,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
