@@ -35,7 +35,7 @@ import Foundation
 
 public protocol TextRenderable: class {
   var textHolder: TextAttributesHolder{ get }
-  func attributeDidupdate(for attribute: AnyKeyPath)
+  func textDidUpdate(for attribute: AnyKeyPath)
 }
 
 extension TextRenderable{
@@ -82,7 +82,7 @@ public class TextAttributesHolder{
     didSet{
       useAttributeText = false
       if text != oldValue{
-        render?.attributeDidupdate(for: \TextRenderable.text)
+        render?.textDidUpdate(for: \TextRenderable.text)
       }
     }
   }
@@ -91,7 +91,7 @@ public class TextAttributesHolder{
     didSet{
       useAttributeText = true
       if attributeText != oldValue{
-        render?.attributeDidupdate(for: \TextRenderable.attributeText)
+        render?.textDidUpdate(for: \TextRenderable.attributeText)
       }
     }
   }
@@ -99,7 +99,7 @@ public class TextAttributesHolder{
   var textColor = UIColor.black{
     didSet{
       if oldValue != textColor{
-        render?.attributeDidupdate(for: \TextRenderable.textColor)
+        render?.textDidUpdate(for: \TextRenderable.textColor)
       }
     }
   }
@@ -107,7 +107,7 @@ public class TextAttributesHolder{
   var font = UIFont.systemFont(ofSize: 17){
     didSet{
       if oldValue != font{
-        render?.attributeDidupdate(for: \TextRenderable.font)
+        render?.textDidUpdate(for: \TextRenderable.font)
       }
     }
   }
@@ -115,7 +115,7 @@ public class TextAttributesHolder{
   var numberOfLines = 1{
     didSet{
       if oldValue != numberOfLines{
-        render?.attributeDidupdate(for: \TextRenderable.numberOfLines)
+        render?.textDidUpdate(for: \TextRenderable.numberOfLines)
       }
     }
   }
@@ -123,7 +123,7 @@ public class TextAttributesHolder{
   var truncationMode: NSLineBreakMode = .byWordWrapping{
     didSet{
       if oldValue != truncationMode{
-        render?.attributeDidupdate(for: \TextRenderable.truncationMode)
+        render?.textDidUpdate(for: \TextRenderable.truncationMode)
       }
     }
   }

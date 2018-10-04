@@ -105,16 +105,16 @@ open class FlowLayoutNode: ViewNode {
     let width = size.width
     let height = size.height
 
-    var cellSpace = itemSpace
+    var space = itemSpace
     let totalSpace = bounds.width - inset.xAxis - columnCount * width
-    if cellSpace < 0.01 {
-        cellSpace = totalSpace/(columnCount + (withMargin ? 1 : -1))
+    if space < 0.01 {
+        space = totalSpace/(columnCount + (withMargin ? 1 : -1))
     }
     for (index, item) in validNode.enumerated(){
       let xIndex = index % columnCount
       let yIndex = index/columnCount
 
-      let x = inset.left + xIndex*(width + cellSpace) + (withMargin ? cellSpace : 0 )
+      let x = inset.left + xIndex*(width + space) + (withMargin ? space : 0 )
       let y = inset.top + yIndex*(height + lineSpace)
       item.frame = CGRect(x: x, y: y, width: width, height: height)
     }

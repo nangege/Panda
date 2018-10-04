@@ -37,7 +37,7 @@ public class TextNode: ControlNode,TextRenderable {
   
   public lazy var textHolder = TextAttributesHolder(self)
   
-  public func attributeDidupdate(for attribute: AnyKeyPath) {
+  public func textDidUpdate(for attribute: AnyKeyPath) {
     if attribute == \TextRenderable.textColor{
       setNeedsDisplay()
     }else{
