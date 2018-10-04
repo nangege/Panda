@@ -33,111 +33,35 @@
 import UIKit
 import Layoutable
 
-public class TextNode: ControlNode {
+public class TextNode: ControlNode,TextRenderable {
   
-  public var text: String = ""{
-    didSet{
-      useAttributeText = false
-      if text != oldValue{
-        invalidateIntrinsicContentSize()
-        setNeedsDisplay()
-      }
+  public lazy var textHolder = TextAttributesHolder(self)
+  
+  public func attributeDidupdate(for attribute: AnyKeyPath) {
+    if attribute == \TextRenderable.textColor{
+      setNeedsDisplay()
+    }else{
+      invalidateIntrinsicContentSize()
+      setNeedsDisplay()
     }
   }
-  
-  public var attributeText: NSAttributedString?{
-    didSet{
-      useAttributeText = true
-      if attributeText != oldValue{
-        invalidateIntrinsicContentSize()
-        setNeedsDisplay()
-      }
-    }
-  }
-  
-  public var textColor = UIColor.black{
-    didSet{
-      if oldValue != textColor{
-        setNeedsDisplay()
-      }
-    }
-  }
-  
-  public var font = UIFont.systemFont(ofSize: 17){
-    didSet{
-      if oldValue != font{
-        invalidateIntrinsicContentSize()
-        setNeedsDisplay()
-      }
-    }
-  }
-  
-  public var numberOfLines = 1{
-    didSet{
-      if oldValue != numberOfLines{
-        invalidateIntrinsicContentSize()
-        setNeedsDisplay()
-      }
-    }
-  }
-  
-  public var truncationMode: NSLineBreakMode = .byWordWrapping
-  
-  private var useAttributeText = false
   
   override public var itemIntrinsicContentSize: Size{
-    
-    if textAttributes.attributeString.length == 0{
-      return SizeZero
-    }
-    
-    let maxWidth = CGFloat.infinity
-    let size = CGSize(width: maxWidth, height: .infinity)
-    
-    let textRender = render(for: CGRect(origin: .zero, size: size))
-    return textRender.size.tupleSize
+    return textHolder.itemIntrinsicContentSize.tupleSize
   }
   
-  public override func contentSizeFor(maxWidth: Double) -> Size {
+  override public func contentSizeFor(maxWidth: Double) -> Size {
     // need optimize
     let textSize = itemIntrinsicContentSize
     if textSize.width <= maxWidth || numberOfLines == 1{
       return SizeZero
     }
     
-    let size = CGSize(width: maxWidth, height: .infinity)
-    
-    return render(for: CGRect(origin: .zero, size: size)).size.tupleSize
+    return textHolder.sizeFor(maxWidth: CGFloat(maxWidth)).tupleSize
   }
   
   override public func drawContent(in context: CGContext) {
   
-    let textRender = render(for: bounds)
-    
-    textRender.drawInContext(context, bounds: bounds)
-  }
-  
-  private func render(for bounds: CGRect) -> TextRender{
-    return TextRender.render(for: textAttributes, constrainedSize: bounds.size)
-  }
-  
-  private var textAttributes: TextAttributes{
-    
-    var usedAttributeText: NSAttributedString
-    
-    if let attributeText = attributeText,useAttributeText{
-      usedAttributeText = attributeText
-    }else{
-      let attributes:[NSAttributedString.Key: Any] = [.font:font,
-                                                      .foregroundColor: textColor]
-      usedAttributeText = NSAttributedString(string: text as String,attributes: attributes)
-    }
-    
-    var attributes = TextAttributes()
-    attributes.attributeString = usedAttributeText
-    attributes.maximumNumberOfLines = numberOfLines
-    attributes.lineBreakMode = truncationMode
-
-    return attributes
+    textHolder.render(for: bounds).drawInContext(context, bounds: bounds)
   }
 }
