@@ -37,9 +37,9 @@ import CoreGraphics
 final public class TextRender{
   
   
-  /// we can not use NSCache here. NSCache will discard cached value when received memory warning
+  /// we can not use NSCache here. NSCache will discard caches when received memory warning
   /// which will degrade performance significantly
-  /// textRender cache only cost small memory,we don't have to clean up when have memory issuse
+  /// textRender cache only cost small memory,we don't need to clean up when we have memory issuse
   /// if no long in use ,use cleanCache
   private static let cache = NSMapTable<TextKitRenderKey, TextRender>.strongToStrongObjects()
   

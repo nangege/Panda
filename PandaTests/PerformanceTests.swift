@@ -33,7 +33,9 @@ class PerformanceTests: XCTestCase {
   }
   
   func testNestAutolayout(){
-    nestAutoLayout(100)
+    self.measure {
+      nestAutoLayout(100)
+    }
   }
   
   func testNestViewLayout(){
@@ -61,7 +63,7 @@ extension PerformanceTests{
   func nestNode(_ testNumber: Int = 100) {
     let node = ViewNode()
     var nodes = [ViewNode]()
-    node.size == (320.0,640.0)
+    node.size == (640,480)
     for index in 0..<testNumber{
       
       let newNode = ViewNode()
@@ -82,7 +84,7 @@ extension PerformanceTests{
     
     let node = UIView()
     var nodes = [UIView]()
-    node.size == (320.0,640.0)
+    node.size == (640,480)
     for index in 0..<testNumber{
       
       let newNode = UIView()
@@ -230,8 +232,8 @@ extension PerformanceTests{
         
         nodes.append(node)
       }
-      nodes[0].layoutIfNeeded()
     }
+    nodes[0].layoutIfNeeded()
   }
 }
 

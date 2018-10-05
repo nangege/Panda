@@ -207,7 +207,7 @@ open class ViewNode: Layoutable {
     }
   }
   
-  public var itemIntrinsicContentSize: Size{
+  open var itemIntrinsicContentSize: Size{
     return InvaidIntrinsicSize
   }
   
@@ -280,23 +280,23 @@ open class ViewNode: Layoutable {
   }
   
   // Layoutable protocol
-  public var superItem: Layoutable?{
+  open var superItem: Layoutable?{
     return superNode
   }
   
-  public var subItems: [Layoutable]{
+  open var subItems: [Layoutable]{
     return subnodes
   }
   
-  public lazy var manager =  LayoutManager(self)
+  open lazy var manager =  LayoutManager(self)
 
-  public func contentSizeFor(maxWidth: Double) -> Size {
+  open func contentSizeFor(maxWidth: Double) -> Size {
     return InvaidIntrinsicSize
   }
   
-  public func updateConstraint() {}
+  open func updateConstraint() {}
   
-  public func layoutSubItems() {}
+  open func layoutSubItems() {}
   
 // delegate for AsyncDisplayLayer
 // provide contents for CALayer asynchronously

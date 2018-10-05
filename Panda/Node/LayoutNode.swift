@@ -57,7 +57,7 @@ open class LayoutNode<T: UIView>: ViewNode {
                   height: UIView.noIntrinsicMetric)
   }
   
-  public override var itemIntrinsicContentSize: Size{
+  open override var itemIntrinsicContentSize: Size{
     return sizeGenerator().tupleSize
   }
   

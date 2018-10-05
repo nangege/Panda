@@ -33,7 +33,7 @@
 
 import UIKit
 
-public typealias ControlAction = (UIControl.Event) -> ()
+public typealias ControlAction = (ControlNode,UIControl.Event) -> ()
 
 open class ControlNode: ViewNode{
   
@@ -105,7 +105,7 @@ open class ControlNode: ViewNode{
   
   // send all actions associated with events
   open func sendActions(for controlEvents: UIControl.Event, with event:UIEvent? = nil){
-    eventActionTable[controlEvents]?(controlEvents)
+    eventActionTable[controlEvents]?(self,controlEvents)
   }
   
   override open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {

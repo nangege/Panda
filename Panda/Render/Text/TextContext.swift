@@ -39,7 +39,7 @@ public struct TextContext{
   let textStorage = NSTextStorage()
   let constraintSize: CGSize
   
-  typealias TextKitLockedBlock = (NSLayoutManager,NSTextContainer, NSTextStorage)->()
+  public typealias TextKitLockedBlock = (NSLayoutManager,NSTextContainer, NSTextStorage)->()
   
   init(attributeText: NSAttributedString,
        lineBreakMode: NSLineBreakMode,
@@ -61,7 +61,7 @@ public struct TextContext{
     self.constraintSize = constraintSize
   }
   
-  func performBlockWithLockedComponent(_ block: TextKitLockedBlock){
+  public func performBlockWithLockedComponent(_ block: TextKitLockedBlock){
     block(layoutManager,textContainer,textStorage)
   }
   

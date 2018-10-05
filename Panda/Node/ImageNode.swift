@@ -60,7 +60,7 @@ open class ImageNode: ControlNode {
     }
   }
   
-  override public var itemIntrinsicContentSize: Size{
+  override open var itemIntrinsicContentSize: Size{
     if let image = image {
       return image.size.tupleSize
     }

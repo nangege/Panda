@@ -139,7 +139,7 @@ open class StackLayoutNode: ViewNode{
     needUpdateConstraint = true
   }
   
-  override public func updateConstraint() {
+  override open func updateConstraint() {
     updateConstraintIfNeed()
     super.updateConstraint()
   }

@@ -142,12 +142,12 @@ open class ButtonNode: ControlNode{
     updateForState()
   }
   
-  override public func layoutSubItems() {
+  override open func layoutSubItems() {
     backgroundImageNode.frame = bounds
     updateButtonLayout()
   }
   
-  override public var itemIntrinsicContentSize: Size{
+  override open var itemIntrinsicContentSize: Size{
     let title = titleState.value(for: currentState)
     let image = imageState.value(for: currentState)
     let backgroundImage = backgroundImageState.value(for: currentState)

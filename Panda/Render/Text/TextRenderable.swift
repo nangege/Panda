@@ -156,7 +156,7 @@ public class TextAttributesHolder{
     return TextRender.render(for: textAttributes, constrainedSize: bounds.size)
   }
   
-  var textAttributes: TextAttributes{
+  public var textAttributes: TextAttributes{
     
     var usedAttributeText: NSAttributedString
     

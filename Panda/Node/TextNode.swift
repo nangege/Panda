@@ -33,9 +33,13 @@
 import UIKit
 import Layoutable
 
-public class TextNode: ControlNode,TextRenderable {
+public typealias TextTapAction = (NSRange) -> ()
+
+open class TextNode: ControlNode,TextRenderable {
   
   public lazy var textHolder = TextAttributesHolder(self)
+  
+  public var highlightedTapAction: TextTapAction?
   
   public func textDidUpdate(for attribute: AnyKeyPath) {
     if attribute == \TextRenderable.textColor{
@@ -46,11 +50,11 @@ public class TextNode: ControlNode,TextRenderable {
     }
   }
   
-  override public var itemIntrinsicContentSize: Size{
+  override open var itemIntrinsicContentSize: Size{
     return textHolder.itemIntrinsicContentSize.tupleSize
   }
   
-  override public func contentSizeFor(maxWidth: Double) -> Size {
+  override open func contentSizeFor(maxWidth: Double) -> Size {
     // need optimize
     let textSize = itemIntrinsicContentSize
     if textSize.width <= maxWidth || numberOfLines == 1{
@@ -60,8 +64,7 @@ public class TextNode: ControlNode,TextRenderable {
     return textHolder.sizeFor(maxWidth: CGFloat(maxWidth)).tupleSize
   }
   
-  override public func drawContent(in context: CGContext) {
-  
+  override open func drawContent(in context: CGContext) {
     textHolder.render(for: bounds).drawInContext(context, bounds: bounds)
   }
 }

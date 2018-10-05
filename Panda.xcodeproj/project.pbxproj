@@ -11,7 +11,7 @@
 		3806BA1E214FB41F00D6981F /* Layoutable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3806BA1C214FB41F00D6981F /* Layoutable.framework */; };
 		385873C1214A141C001476CE /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385873C0214A141C001476CE /* ImageProcessor.swift */; };
 		385873C4214BDDE3001476CE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385873C3214BDDE3001476CE /* Extension.swift */; };
-		38BA7A372164312B00FD0ACB /* UIKitLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA7A362164312B00FD0ACB /* UIKitLayout.swift */; };
+		389A19F42167343E00F98AE0 /* UIKitLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA7A362164312B00FD0ACB /* UIKitLayout.swift */; };
 		38BA7A3F216441DB00FD0ACB /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA7A3E216441DB00FD0ACB /* PerformanceTests.swift */; };
 		38BA7A412165197500FD0ACB /* TextRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA7A402165197500FD0ACB /* TextRenderable.swift */; };
 		38C106162139977200993530 /* Panda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C1060C2139977200993530 /* Panda.framework */; };
@@ -100,7 +100,6 @@
 		385873C2214BDDB4001476CE /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				38BA7A362164312B00FD0ACB /* UIKitLayout.swift */,
 				385873C3214BDDE3001476CE /* Extension.swift */,
 			);
 			path = Helper;
@@ -141,6 +140,7 @@
 		38C106192139977200993530 /* PandaTests */ = {
 			isa = PBXGroup;
 			children = (
+				38BA7A362164312B00FD0ACB /* UIKitLayout.swift */,
 				38BA7A3E216441DB00FD0ACB /* PerformanceTests.swift */,
 				38C1061C2139977200993530 /* Info.plist */,
 			);
@@ -333,7 +333,6 @@
 				38C10671213997E600993530 /* TextAttributes.swift in Sources */,
 				385873C4214BDDE3001476CE /* Extension.swift in Sources */,
 				38C10676213997E600993530 /* LayoutNode.swift in Sources */,
-				38BA7A372164312B00FD0ACB /* UIKitLayout.swift in Sources */,
 				38C1067E213997E600993530 /* StackLayout.swift in Sources */,
 				38C10678213997E600993530 /* AsyncDisplayLayer.swift in Sources */,
 				38C10679213997E600993530 /* TextNode.swift in Sources */,
@@ -347,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				389A19F42167343E00F98AE0 /* UIKitLayout.swift in Sources */,
 				38BA7A3F216441DB00FD0ACB /* PerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
