@@ -151,7 +151,7 @@ open class FlowLayoutNode: ViewNode {
   }
   
   open override func contentSizeFor(maxWidth: Double) -> Size {
-    guard validNode.count > 0,columnCount > 0 else { return SizeZero }
+    guard validNode.count > 0,columnCount > 0 else { return InvaidIntrinsicSize }
     let size = itemSize(for: CGSize(width: CGFloat(maxWidth), height: bounds.height))
     
     return contenSizeForItemSize(size).tupleSize

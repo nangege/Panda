@@ -55,7 +55,7 @@ extension UIView: Layoutable{
   public func updateConstraint() {}
   
   public func contentSizeFor(maxWidth: Double) -> Size {
-    return SizeZero
+    return InvaidIntrinsicSize
   }
   
 
@@ -104,7 +104,7 @@ extension CALayer: Layoutable{
   public func updateConstraint() {}
   
   public func contentSizeFor(maxWidth: Double) -> Size {
-    return SizeZero
+    return InvaidIntrinsicSize
   }
   
   public var itemIntrinsicContentSize: Size{

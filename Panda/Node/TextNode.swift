@@ -58,7 +58,7 @@ open class TextNode: ControlNode,TextRenderable {
     // need optimize
     let textSize = itemIntrinsicContentSize
     if textSize.width <= maxWidth || numberOfLines == 1{
-      return SizeZero
+      return InvaidIntrinsicSize
     }
     
     return textHolder.sizeFor(maxWidth: CGFloat(maxWidth)).tupleSize
