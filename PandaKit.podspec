@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 
-  s.name         = "Panda"
+  s.name         = "PandaKit"
   s.version      = "0.1-beta"
   s.summary      = "An asynchronous render and layout framework which can be used to achieve high performance tableview"
 
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 
 
   s.source       = { :git => "https://github.com/nangege/Panda.git", :tag => '0.1-beta' }
-  s.source_files  = ["Panda/Sources/*.swift", "Panda/Panda.h"]
+  s.source_files  = ["Panda/**/*.swift", "Panda/Panda.h"]
   s.public_header_files = ["Panda/Panda.h"]
   
 
