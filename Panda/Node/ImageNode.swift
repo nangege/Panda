@@ -60,11 +60,11 @@ open class ImageNode: ControlNode {
     }
   }
   
-  override open var itemIntrinsicContentSize: Size{
+  override open var itemIntrinsicContentSize: CGSize{
     if let image = image {
-      return image.size.tupleSize
+      return image.size
     }
-    return SizeZero
+    return .zero
   }
   
   override func contentForLayer(_ layer: AsyncDisplayLayer, isCancel: () -> Bool) -> UIImage? {

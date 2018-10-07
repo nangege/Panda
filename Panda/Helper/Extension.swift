@@ -124,8 +124,8 @@ extension CGSize{
     return size
   }
   
-  public var tupleSize: Size{
-    return (Double(width),Double(height))
+  public var tuple: Size{
+    return (width,height)
   }
   
   public init(_ size: Size){
@@ -134,8 +134,8 @@ extension CGSize{
 }
 
 extension CGPoint{
-  public var tuplePoint: Point{
-    return (Double(x),Double(y))
+  public var tuple: Point{
+    return (x,y)
   }
 }
 
@@ -150,21 +150,12 @@ extension CGFloat{
 
 extension CGRect{
   
-  public init(_ rect: Rect) {
-    self.init(x: rect.origin.x, y: rect.origin.y,
-              width: rect.size.width, height: rect.size.height)
-  }
-  
   /// adjust to fit pixel
   public var pixelRounded: CGRect{
     return CGRect(x: origin.x.pixelRounded,
                   y: origin.y.pixelRounded,
               width: size.width.pixelRounded,
              height: size.height.pixelRounded)
-  }
-  
-  public var tupleRect: Rect{
-    return (origin.tuplePoint,size.tupleSize)
   }
 
 }

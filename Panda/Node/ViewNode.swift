@@ -144,11 +144,11 @@ open class ViewNode: Layoutable {
   public init(){}
   
   open func sizeToFit(){
-    frame = CGRect(origin: frame.origin, size: CGSize(itemIntrinsicContentSize))
+    frame = CGRect(origin: frame.origin, size: itemIntrinsicContentSize)
   }
   
   open func sizeThatFit(_ size: CGSize) -> CGSize{
-    return CGSize(itemIntrinsicContentSize).constrainted(to: size)
+    return itemIntrinsicContentSize.constrainted(to: size)
   }
   
   open func setNeedsDisplay(){
@@ -197,17 +197,17 @@ open class ViewNode: Layoutable {
     layoutIfEnabled()
   }
   
-  public var layoutRect: Rect{
+  public var layoutRect: CGRect{
     set{
-      frame = CGRect(newValue).pixelRounded
+      frame = newValue.pixelRounded
     }
     
     get{
-      return frame.tupleRect
+      return frame
     }
   }
   
-  open var itemIntrinsicContentSize: Size{
+  open var itemIntrinsicContentSize: CGSize{
     return InvaidIntrinsicSize
   }
   
@@ -290,7 +290,7 @@ open class ViewNode: Layoutable {
   
   open lazy var manager =  LayoutManager(self)
 
-  open func contentSizeFor(maxWidth: Double) -> Size {
+  open func contentSizeFor(maxWidth: CGFloat) -> CGSize {
     return InvaidIntrinsicSize
   }
   

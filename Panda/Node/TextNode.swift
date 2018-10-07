@@ -50,18 +50,18 @@ open class TextNode: ControlNode,TextRenderable {
     }
   }
   
-  override open var itemIntrinsicContentSize: Size{
-    return textHolder.itemIntrinsicContentSize.tupleSize
+  override open var itemIntrinsicContentSize: CGSize{
+    return textHolder.itemIntrinsicContentSize
   }
   
-  override open func contentSizeFor(maxWidth: Double) -> Size {
+  override open func contentSizeFor(maxWidth: CGFloat) -> CGSize {
     // need optimize
     let textSize = itemIntrinsicContentSize
     if textSize.width <= maxWidth || numberOfLines == 1{
       return InvaidIntrinsicSize
     }
     
-    return textHolder.sizeFor(maxWidth: CGFloat(maxWidth)).tupleSize
+    return textHolder.sizeFor(maxWidth: CGFloat(maxWidth))
   }
   
   override open func drawContent(in context: CGContext) {

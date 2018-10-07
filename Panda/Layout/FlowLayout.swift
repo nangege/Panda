@@ -143,18 +143,18 @@ open class FlowLayoutNode: ViewNode {
     return CGSize(width: width, height: height)
   }
   
-  open override  var itemIntrinsicContentSize: Size{
-    guard validNode.count > 0,columnCount > 0 else { return SizeZero }
+  open override  var itemIntrinsicContentSize: CGSize{
+    guard validNode.count > 0,columnCount > 0 else { return .zero }
     let size = itemSize(for: bounds.size)
     
-    return contenSizeForItemSize(size).tupleSize
+    return contenSizeForItemSize(size)
   }
   
-  open override func contentSizeFor(maxWidth: Double) -> Size {
+  open override func contentSizeFor(maxWidth: CGFloat) -> CGSize {
     guard validNode.count > 0,columnCount > 0 else { return InvaidIntrinsicSize }
     let size = itemSize(for: CGSize(width: CGFloat(maxWidth), height: bounds.height))
     
-    return contenSizeForItemSize(size).tupleSize
+    return contenSizeForItemSize(size)
   }
   
   private func contenSizeForItemSize(_ size: CGSize) -> CGSize{
