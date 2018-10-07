@@ -35,15 +35,15 @@ import UIKit
 
 final class ImageRender{
   
-  static let cache = NSCache<ImageKey, UIImage>()
+//  static let cache = NSCache<ImageKey, UIImage>()
   
   class func imageForKey(_ key: ImageKey, isCancelled: CancelBlock) -> UIImage?{
-    if let image = cache.object(forKey: key){
-      return image
-    }
+//    if let image = cache.object(forKey: key){
+//      return image
+//    }
     
     if let image = contentForKey(key, isCancelled){
-      cache.setObject(image, forKey: key)
+      //cache.setObject(image, forKey: key)
       return image
     }
     
