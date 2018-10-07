@@ -1,7 +1,7 @@
 ## What is Panda
 
 
-Panda is a asynchronous render and layout framework which can be used to achieve high performance tableview. 
+Panda is an asynchronous render and layout framework which can be used to achieve high performance tableview. 
 
 Panda is combined by 3 different component:
 
