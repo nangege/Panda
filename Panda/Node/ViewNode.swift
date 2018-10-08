@@ -198,13 +198,8 @@ open class ViewNode: Layoutable {
   }
   
   public var layoutRect: CGRect{
-    set{
-      frame = newValue.pixelRounded
-    }
-    
-    get{
-      return frame
-    }
+    set{ frame = newValue.pixelRounded }
+    get{ return frame }
   }
   
   open var itemIntrinsicContentSize: CGSize{
@@ -228,9 +223,10 @@ open class ViewNode: Layoutable {
     if let index = subnodes.index(of: node){
       node.superNode = nil
       subnodes.remove(at: index)
-      recursivelyReset(from: node)
+      node.recursivelyReset(from: node)
       if node.isInHierarchy{
         node.view.removeFromSuperview()
+        node.isInHierarchy = false
       }
     }
   }
