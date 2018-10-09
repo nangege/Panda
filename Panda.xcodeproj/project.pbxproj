@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3806BA1D214FB41F00D6981F /* Cassowary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3806BA1B214FB41F00D6981F /* Cassowary.framework */; };
-		3806BA1E214FB41F00D6981F /* Layoutable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3806BA1C214FB41F00D6981F /* Layoutable.framework */; };
 		385873C1214A141C001476CE /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385873C0214A141C001476CE /* ImageProcessor.swift */; };
 		385873C4214BDDE3001476CE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385873C3214BDDE3001476CE /* Extension.swift */; };
 		389A19F42167343E00F98AE0 /* UIKitLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA7A362164312B00FD0ACB /* UIKitLayout.swift */; };
@@ -45,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		3806BA1B214FB41F00D6981F /* Cassowary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cassowary.framework; path = Carthage/Build/iOS/Cassowary.framework; sourceTree = "<group>"; };
-		3806BA1C214FB41F00D6981F /* Layoutable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Layoutable.framework; path = Carthage/Build/iOS/Layoutable.framework; sourceTree = "<group>"; };
 		385873C0214A141C001476CE /* ImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		385873C3214BDDE3001476CE /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		38598AC6213F4B7B00914DEB /* Layoutable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Layoutable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +71,6 @@
 		38C1066E213997E600993530 /* StackLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackLayout.swift; sourceTree = "<group>"; };
 		38C1066F213997E600993530 /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		38C106842139994000993530 /* Cassowary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cassowary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		38C106862139994000993530 /* LayoutItemAble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LayoutItemAble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +79,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3806BA1D214FB41F00D6981F /* Cassowary.framework in Frameworks */,
-				3806BA1E214FB41F00D6981F /* Layoutable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,8 +203,6 @@
 				38598AC6213F4B7B00914DEB /* Layoutable.framework */,
 				38C106842139994000993530 /* Cassowary.framework */,
 				3806BA1B214FB41F00D6981F /* Cassowary.framework */,
-				3806BA1C214FB41F00D6981F /* Layoutable.framework */,
-				38C106862139994000993530 /* LayoutItemAble.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
