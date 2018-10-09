@@ -10,7 +10,7 @@ import XCTest
 
 @testable import Panda
 
-@testable import Layoutable
+import Layoutable
 
 class PerformanceTests: XCTestCase {
   
@@ -126,8 +126,8 @@ extension PerformanceTests{
       newNode.top >= node.top + 20
       newNode.bottom <= node.bottom - 20
       
-      newNode.left == leftNode.left + Double(arc4random()%20) ~ .strong
-      newNode.top == rightNode.top + Double(arc4random()%20) ~ .strong
+      newNode.left == leftNode.left + CGFloat(arc4random()%20) ~ .strong
+      newNode.top == rightNode.top + CGFloat(arc4random()%20) ~ .strong
       
       nodes.append(newNode)
     }
@@ -159,8 +159,8 @@ extension PerformanceTests{
       newNode.top >= node.top + 20
       newNode.bottom <= node.bottom - 20
       
-      newNode.left == leftNode.left + Double(arc4random()%20) ~ .strong
-      newNode.top == rightNode.top + Double(arc4random()%20) ~ .strong
+      newNode.left == leftNode.left + CGFloat(arc4random()%20) ~ .strong
+      newNode.top == rightNode.top + CGFloat(arc4random()%20) ~ .strong
       
       nodes.append(newNode)
     }

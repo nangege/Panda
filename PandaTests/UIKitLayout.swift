@@ -10,22 +10,13 @@ import UIKit
 import Layoutable
 
 extension UIView: Layoutable{
-  public var itemIntrinsicContentSize: Size {
-    return SizeZero
-  }
-  
   struct Key {
     static var LayoutManager = "LayoutManager"
   }
   
-  public var layoutRect: Rect{
-    set{
-      frame = CGRect(layoutRect)
-    }
-    
-    get{
-      return frame.tupleRect
-    }
+  public var layoutRect: CGRect{
+    set{ frame = layoutRect }
+    get{ return frame }
   }
   
   public var manager: LayoutManager {
@@ -54,11 +45,13 @@ extension UIView: Layoutable{
   
   public func updateConstraint() {}
   
-  public func contentSizeFor(maxWidth: Double) -> Size {
+  public func contentSizeFor(maxWidth: CGFloat) -> CGSize {
     return InvaidIntrinsicSize
   }
   
-
+  public var itemIntrinsicContentSize: CGSize {
+    return InvaidIntrinsicSize
+  }
 }
 
 extension CALayer: Layoutable{
@@ -91,23 +84,23 @@ extension CALayer: Layoutable{
     layoutSublayers()
   }
   
-  public var layoutRect: Rect{
+  public var layoutRect: CGRect{
     set{
-      frame = CGRect(layoutRect).pixelRounded
+      frame = layoutRect.pixelRounded
     }
     
     get{
-      return frame.tupleRect
+      return frame
     }
   }
   
   public func updateConstraint() {}
   
-  public func contentSizeFor(maxWidth: Double) -> Size {
+  public func contentSizeFor(maxWidth: CGFloat) -> CGSize {
     return InvaidIntrinsicSize
   }
   
-  public var itemIntrinsicContentSize: Size{
+  public var itemIntrinsicContentSize: CGSize{
     return InvaidIntrinsicSize
   }
 }

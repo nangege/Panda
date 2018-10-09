@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3806BA1D214FB41F00D6981F /* Cassowary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3806BA1B214FB41F00D6981F /* Cassowary.framework */; };
 		385873C1214A141C001476CE /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385873C0214A141C001476CE /* ImageProcessor.swift */; };
 		385873C4214BDDE3001476CE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385873C3214BDDE3001476CE /* Extension.swift */; };
+		386BC2CE216CE628009C1353 /* Layoutable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386BC2CD216CE628009C1353 /* Layoutable.framework */; };
+		386BC2D0216CE648009C1353 /* Cassowary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386BC2CF216CE648009C1353 /* Cassowary.framework */; };
+		386BC2D1216CE76E009C1353 /* Layoutable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386BC2CD216CE628009C1353 /* Layoutable.framework */; };
 		389A19F42167343E00F98AE0 /* UIKitLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA7A362164312B00FD0ACB /* UIKitLayout.swift */; };
 		38BA7A3F216441DB00FD0ACB /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA7A3E216441DB00FD0ACB /* PerformanceTests.swift */; };
 		38BA7A412165197500FD0ACB /* TextRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA7A402165197500FD0ACB /* TextRenderable.swift */; };
@@ -43,10 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3806BA1B214FB41F00D6981F /* Cassowary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cassowary.framework; path = Carthage/Build/iOS/Cassowary.framework; sourceTree = "<group>"; };
 		385873C0214A141C001476CE /* ImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		385873C3214BDDE3001476CE /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		38598AC6213F4B7B00914DEB /* Layoutable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Layoutable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		386BC2CD216CE628009C1353 /* Layoutable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Layoutable.framework; path = Carthage/Build/iOS/Layoutable.framework; sourceTree = "<group>"; };
+		386BC2CF216CE648009C1353 /* Cassowary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cassowary.framework; path = Carthage/Build/iOS/Cassowary.framework; sourceTree = "<group>"; };
 		38BA7A362164312B00FD0ACB /* UIKitLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitLayout.swift; sourceTree = "<group>"; };
 		38BA7A3E216441DB00FD0ACB /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		38BA7A402165197500FD0ACB /* TextRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRenderable.swift; sourceTree = "<group>"; };
@@ -70,7 +72,6 @@
 		38C1066B213997E600993530 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		38C1066E213997E600993530 /* StackLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackLayout.swift; sourceTree = "<group>"; };
 		38C1066F213997E600993530 /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
-		38C106842139994000993530 /* Cassowary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cassowary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3806BA1D214FB41F00D6981F /* Cassowary.framework in Frameworks */,
+				386BC2D0216CE648009C1353 /* Cassowary.framework in Frameworks */,
+				386BC2CE216CE628009C1353 /* Layoutable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				386BC2D1216CE76E009C1353 /* Layoutable.framework in Frameworks */,
 				38C106162139977200993530 /* Panda.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,9 +203,8 @@
 		38C106832139994000993530 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				38598AC6213F4B7B00914DEB /* Layoutable.framework */,
-				38C106842139994000993530 /* Cassowary.framework */,
-				3806BA1B214FB41F00D6981F /* Cassowary.framework */,
+				386BC2CF216CE648009C1353 /* Cassowary.framework */,
+				386BC2CD216CE628009C1353 /* Layoutable.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -229,6 +231,7 @@
 				38C106082139977200993530 /* Sources */,
 				38C106092139977200993530 /* Frameworks */,
 				38C1060A2139977200993530 /* Resources */,
+				386BC2CC216CE558009C1353 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -246,6 +249,7 @@
 				38C106112139977200993530 /* Sources */,
 				38C106122139977200993530 /* Frameworks */,
 				38C106132139977200993530 /* Resources */,
+				386BC2D2216CE9FE009C1353 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -309,6 +313,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		386BC2CC216CE558009C1353 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Layoutable.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Cassowary.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		386BC2D2216CE9FE009C1353 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Layoutable.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Cassowary.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		38C106082139977200993530 /* Sources */ = {
@@ -547,6 +592,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DPJ43EEV6L;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PandaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -566,6 +615,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DPJ43EEV6L;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PandaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
