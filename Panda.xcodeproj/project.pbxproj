@@ -32,6 +32,8 @@
 		38C1067C213997E600993530 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1066B213997E600993530 /* Transaction.swift */; };
 		38C1067E213997E600993530 /* StackLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1066E213997E600993530 /* StackLayout.swift */; };
 		38C1067F213997E600993530 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1066F213997E600993530 /* FlowLayout.swift */; };
+		38E963FE216CF555006A5BD7 /* Cassowary.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 386BC2CF216CE648009C1353 /* Cassowary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38E963FF216CF555006A5BD7 /* Layoutable.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 386BC2CD216CE628009C1353 /* Layoutable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,20 @@
 			remoteInfo = Panda;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		38E963FD216CF542006A5BD7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				38E963FE216CF555006A5BD7 /* Cassowary.framework in CopyFiles */,
+				38E963FF216CF555006A5BD7 /* Layoutable.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		385873C0214A141C001476CE /* ImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
@@ -231,7 +247,6 @@
 				38C106082139977200993530 /* Sources */,
 				38C106092139977200993530 /* Frameworks */,
 				38C1060A2139977200993530 /* Resources */,
-				386BC2CC216CE558009C1353 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -249,7 +264,7 @@
 				38C106112139977200993530 /* Sources */,
 				38C106122139977200993530 /* Frameworks */,
 				38C106132139977200993530 /* Resources */,
-				386BC2D2216CE9FE009C1353 /* ShellScript */,
+				38E963FD216CF542006A5BD7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -313,47 +328,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		386BC2CC216CE558009C1353 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Layoutable.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Cassowary.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-		386BC2D2216CE9FE009C1353 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Layoutable.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Cassowary.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		38C106082139977200993530 /* Sources */ = {
