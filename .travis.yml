@@ -1,0 +1,25 @@
+language: swift
+os: osx
+osx_image: xcode10
+
+env:
+  matrix:
+    - TEST_TYPE=iOS
+
+-before_install:
+ - |
+    gem install xcpretty -N --no-ri --no-rdoc
+    brew update
+    brew outdated carthage || brew upgrade carthage
+script:
+- |
+    if [ "$TEST_TYPE" = iOS ]; then
+      set -o pipefail
+      carthage update 
+      xcodebuild clean test -project Panda.xcodeproj -scheme Panda -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.0' -enableCodeCoverage YES | bundle exec xcpretty
+    fi
+after_success:
+    - sleep 5
+    - if [ "$TEST_TYPE" = iOS ] ; then
+        bash <(curl -s https://codecov.io/bash)
+      fi
