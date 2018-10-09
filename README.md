@@ -1,3 +1,8 @@
+## Panda
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Version](https://img.shields.io/cocoapods/v/PandaKit.svg?style=flat)](http://cocoapods.org/pods/PandaKit)
+[![](https://img.shields.io/badge/iOS-8.0%2B-lightgrey.svg)]()
+[![Swift 4.0](https://img.shields.io/badge/Swift-4.2-orange.svg)]()
 ## What is Panda
 
 
@@ -22,9 +27,36 @@ When it comes to  asynchronous render,many developr will think about [Texture](h
 ## Requirements
 - iOS 8.0+
 - Swift 4.2
-- xcode 10.0
+- Xcode 10.0
 
 ## Installation
+
+### CocoaPods
+
+[CocoaPods](http://cocoapods.org/) is a dependency manager for Cocoa projects. Install it with the following command:
+
+`$ gem install cocoapods`
+
+To integrate Panda into your Xcode project using CocoaPods, specify it to a target in your Podfile:
+
+```
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+target 'MyApp' do
+  # your other pod
+  # ...
+  pod 'PandaKit'
+end
+```
+Then, run the following command:
+
+`$ pod install`
+
+open the `{Project}.xcworkspace` instead of the `{Project}.xcodeproj` after you installed anything from CocoaPods.
+
+For more information about how to use CocoaPods, [see this tutorial](http://www.raywenderlich.com/64546/introduction-to-cocoapods-2).
 
 ### Carthage
 
@@ -142,15 +174,8 @@ For more information about how to use Carthage, please see its [project page](ht
 
 
 
-
-
-## Know issuse
-- There is some problem with touch handling
-- remove node is not support yet,try hidden as a replacement
-
 ## Todo
 - Unittest
-- Node removable
 - TextRender cache control
 
 
