@@ -124,12 +124,14 @@ open class ViewNode: Layoutable {
       subnodes.forEach{
         if !$0.isInHierarchy{
           displayView.addSubview($0.view)
+          $0.view.frame = $0.frame
+          $0.view.layer.display()
         }
       }
       return displayView
     }
     isInHierarchy = true
-    
+    displayView.frame = frame
     subnodes.forEach{ displayView.addSubview($0.view)}
     return displayView
   }

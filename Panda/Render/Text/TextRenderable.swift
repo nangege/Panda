@@ -120,7 +120,7 @@ public class TextAttributesHolder{
     }
   }
   
-  var truncationMode: NSLineBreakMode = .byWordWrapping{
+  var truncationMode: NSLineBreakMode = .byTruncatingTail{
     didSet{
       if oldValue != truncationMode{
         render?.textDidUpdate(for: \TextRenderable.truncationMode)
