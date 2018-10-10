@@ -36,12 +36,15 @@ import CoreGraphics
 
 final public class TextRender{
   
+  /// we do not use NSCache here. NSCache‘s auto-removal policies is unpredictable
+  /// which may degrade performance significantly sometimes
+  /// textRender cache only cost small memory,we don't need to clean up even when we have memory issuse
+  /// if no long in use ,clean cache manully
+  private typealias RenderCache = NSMapTable<TextKitRenderKey, TextRender>
+
+  private static let cache = RenderCache.strongToStrongObjects()
   
-  /// we can not use NSCache here. NSCache will discard caches when received memory warning
-  /// which will degrade performance significantly
-  /// textRender cache only cost small memory,we don't need to clean up when we have memory issuse
-  /// if no long in use ,use cleanCache
-  private static let cache = NSMapTable<TextKitRenderKey, TextRender>.strongToStrongObjects()
+  private static var cachePool = [RenderCache]()
   
   public let textAttributes: TextAttributes
   public let textContext: TextContext
@@ -68,19 +71,35 @@ final public class TextRender{
     
     let key = TextKitRenderKey(attributes: attributes, constrainedSize: constrainedSize)
 
-    if let render = cache.object(forKey: key){
+    if let render = currentCache.object(forKey: key){
       return render
     }
     
     let render =  TextRender(textAttributes: attributes, constraintSize: constrainedSize)
     
-    cache.setObject(render, forKey: key)
+    currentCache.setObject(render, forKey: key)
     
     return render
   }
   
   public class func cleanCache(){
     cache.removeAllObjects()
+  }
+  
+  public class func cleanCachePool(){
+    cachePool.removeAll()
+  }
+  
+  public class func pushCache(){
+    cachePool.append(RenderCache.strongToStrongObjects())
+  }
+  
+  public class func popCache(){
+    _ = cachePool.popLast()
+  }
+  
+  private static var currentCache: RenderCache{
+    return cachePool.last ?? cache
   }
   
   private func updateTextSize(){

@@ -42,6 +42,8 @@ open class ViewNode: Layoutable {
   
   open var userInteractionEnabled = true
   
+  open var enableAutoUpdate = true
+  
   open var backgroundColor: UIColor = .clear{
     didSet{
       if oldValue != backgroundColor{
@@ -138,9 +140,9 @@ open class ViewNode: Layoutable {
   
   private var isInHierarchy = false
   
-  var viewNeedsUpdate = false
-  var layerNeedsDisplay = false
-  var frameDidUpdate = false
+  private var viewNeedsUpdate = false
+  private var layerNeedsDisplay = false
+  private var frameDidUpdate = false
   
   // change access control level to public
   public init(){}
@@ -165,6 +167,11 @@ open class ViewNode: Layoutable {
   
   open func invalidateIntrinsicContentSize(){
     setNeedsLayout()
+  }
+  
+  open func disableAutoUpdate(_ disable: Bool){
+    enableAutoUpdate = !disable
+    subnodes.forEach{ $0.disableAutoUpdate(!disable) }
   }
   
   func commitUpdate(){
@@ -214,6 +221,7 @@ open class ViewNode: Layoutable {
 
   open func addSubnode(_ node: ViewNode){
     node.superNode = self
+    node.enableAutoUpdate = enableAutoUpdate
     subnodes.append(node)
   }
   
@@ -333,6 +341,11 @@ extension ViewNode: Hashable{
 
 extension ViewNode: RunloopObserver{
   func runLoopDidUpdate() {
+    
+    if !enableAutoUpdate{
+      return
+    }
+    
     /// if node is not inHierarchy,auto update is meaningless
     /// and will cause some problem
     if !isInHierarchy{

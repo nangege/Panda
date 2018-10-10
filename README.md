@@ -3,6 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/PandaKit.svg?style=flat)](http://cocoapods.org/pods/PandaKit)
 [![](https://img.shields.io/badge/iOS-8.0%2B-lightgrey.svg)]()
 [![Swift 4.0](https://img.shields.io/badge/Swift-4.2-orange.svg)]()
+<a href="https://travis-ci.org/https://travis-ci.org/nangege/Panda"><img src="https://travis-ci.org/nangege/Panda.svg?branch=master"></a>
 ## What is Panda
 
 
@@ -19,9 +20,10 @@ When it comes to  asynchronous render,many developr will think about [Texture](h
 
 
 ## Feature
-- [x] Asynchronous render view
+- [x] Asynchronously render view
 - [x] AutoLayout similar API with background thread usage ability
 - [x] Comparable with existing UIView subclass
+- [x] High performance
 - [x] Pure Swift implement
 
 ## Requirements
@@ -171,11 +173,11 @@ For more information about how to use Carthage, please see its [project page](ht
    
    visit [Layoutable](https://github.com/nangege/Layoutable) for more about Layout API    
    visit [PandaDemo](https://github.com/nangege/PandaDemo)   for a full demonstration
+   
+ 
+## Tips
+1. The most import thing about performance is `TextRender` Cache so We need to control `TextRender` Cache accurately.You need to clean cache Manully.`TextRender` provide a default `RenderCache` to cache values. If you enter a tempoory ViewController, call `TextRender.pushCache()` to create a new cache, and `TextRender.popCache()` wnen exit from the ViewController to free cache.
+2. if allowed,set `fixedWidth = true ` for `TextNode` .`fixedWidth` means `TextNode`'s width is not determined by text Size, for example you have constraints like textNode.width = 100, or textNode.xSide = superNode.xSide and superNode's width is determined.This will avoid an extra creation of TextRender and avoid a text layout pass which has a big impact on performance. 
 
-
-
-## Todo
-- Unittest
-- TextRender cache control
 
 
