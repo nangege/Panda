@@ -37,7 +37,7 @@ public typealias TextTapAction = (NSRange) -> ()
 
 open class TextNode: ControlNode,TextRenderable {
   
-  public lazy var textHolder = TextAttributesHolder(self)
+  public private(set) lazy var textHolder = TextAttributesHolder(self)
   
   public var highlightedTapAction: TextTapAction?
   
@@ -56,12 +56,13 @@ open class TextNode: ControlNode,TextRenderable {
   
   override open func contentSizeFor(maxWidth: CGFloat) -> CGSize {
     // need optimize
-    let textSize = itemIntrinsicContentSize
-    if textSize.width <= maxWidth || numberOfLines == 1{
+    //let textSize = itemIntrinsicContentSize
+    //textSize.width <= maxWidth ||
+    if numberOfLines == 1{
       return InvaidIntrinsicSize
     }
     
-    return textHolder.sizeFor(maxWidth: CGFloat(maxWidth))
+    return textHolder.sizeFor(maxWidth: maxWidth)
   }
   
   override open func drawContent(in context: CGContext) {

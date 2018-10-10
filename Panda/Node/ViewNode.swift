@@ -159,7 +159,7 @@ open class ViewNode: Layoutable {
   }
   
   open func setNeedsLayout(){
-    manager.layoutNeedsUpdate = true
+    markSizeNeedsUpdate()
     Transaction.addObserver(self)
   }
   

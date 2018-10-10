@@ -80,7 +80,7 @@ public class TextAttributesHolder{
   
   var text: String = ""{
     didSet{
-      useAttributeText = false
+      useAttributedText = false
       if text != oldValue{
         render?.textDidUpdate(for: \TextRenderable.text)
       }
@@ -89,7 +89,7 @@ public class TextAttributesHolder{
   
   var attributeText: NSAttributedString?{
     didSet{
-      useAttributeText = true
+      useAttributedText = true
       if attributeText != oldValue{
         render?.textDidUpdate(for: \TextRenderable.attributeText)
       }
@@ -128,7 +128,7 @@ public class TextAttributesHolder{
     }
   }
   
-  var useAttributeText = false
+  var useAttributedText = false
   
   var itemIntrinsicContentSize: CGSize{
     
@@ -160,7 +160,7 @@ public class TextAttributesHolder{
     
     var usedAttributeText: NSAttributedString
     
-    if let attributeText = attributeText,useAttributeText{
+    if let attributeText = attributeText,useAttributedText{
       usedAttributeText = attributeText
     }else{
       let attributes:[NSAttributedString.Key: Any] = [.font:font,
