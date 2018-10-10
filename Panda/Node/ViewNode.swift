@@ -159,7 +159,7 @@ open class ViewNode: Layoutable {
   }
   
   open func setNeedsLayout(){
-    markSizeNeedsUpdate()
+    layoutNeedsUpdate = true
     Transaction.addObserver(self)
   }
   
@@ -286,7 +286,7 @@ open class ViewNode: Layoutable {
     return subnodes
   }
   
-  open lazy var manager =  LayoutManager(self)
+  open lazy var layoutManager =  LayoutManager(self)
 
   open func contentSizeFor(maxWidth: CGFloat) -> CGSize {
     return InvaidIntrinsicSize
@@ -339,7 +339,7 @@ extension ViewNode: RunloopObserver{
       return
     }
     
-    if manager.layoutNeedsUpdate{
+    if layoutNeedsUpdate{
       layoutIfNeeded()
     }
     updateIfNeed()

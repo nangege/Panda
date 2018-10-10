@@ -19,13 +19,13 @@ extension UIView: Layoutable{
     get{ return frame }
   }
   
-  public var manager: LayoutManager {
+  public var layoutManager: LayoutManager {
     get{
       if let m = objc_getAssociatedObject(self, &Key.LayoutManager) as? LayoutManager{
         return m
       }
       let manager = LayoutManager(self)
-      self.manager = manager
+      self.layoutManager = manager
       return manager
     }
     set { objc_setAssociatedObject(self, &Key.LayoutManager, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
@@ -60,13 +60,13 @@ extension CALayer: Layoutable{
     static var LayoutManager = "LayoutManager"
   }
   
-  public var manager: LayoutManager {
+  public var layoutManager: LayoutManager {
     get{
       if let m = objc_getAssociatedObject(self, &Key.LayoutManager) as? LayoutManager{
         return m
       }
       let manager = LayoutManager(self)
-      self.manager = manager
+      self.layoutManager = manager
       return manager
     }
     set { objc_setAssociatedObject(self, &Key.LayoutManager, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
