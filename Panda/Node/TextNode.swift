@@ -55,12 +55,8 @@ open class TextNode: ControlNode,TextRenderable {
   }
   
   override open func contentSizeFor(maxWidth: CGFloat) -> CGSize {
-    // need optimize
-    //let textSize = itemIntrinsicContentSize
-    //textSize.width <= maxWidth ||
-    if numberOfLines == 1{
-      return InvaidIntrinsicSize
-    }
+    
+    if numberOfLines == 1{ return InvaidIntrinsicSize }
     
     return textHolder.sizeFor(maxWidth: maxWidth)
   }

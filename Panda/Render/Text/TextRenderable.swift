@@ -68,6 +68,11 @@ extension TextRenderable{
     set{ textHolder.truncationMode = newValue }
     get{ return textHolder.truncationMode}
   }
+  
+  public var lineSpace: CGFloat?{
+    set{ textHolder.lineSpace = newValue }
+    get{ return textHolder.lineSpace}
+  }
 }
 
 public class TextAttributesHolder{
@@ -120,6 +125,14 @@ public class TextAttributesHolder{
     }
   }
   
+  var lineSpace: CGFloat?{
+    didSet{
+      if oldValue != lineSpace{
+        render?.textDidUpdate(for: \TextRenderable.lineSpace)
+      }
+    }
+  }
+  
   var truncationMode: NSLineBreakMode = .byTruncatingTail{
     didSet{
       if oldValue != truncationMode{
@@ -168,6 +181,14 @@ public class TextAttributesHolder{
       usedAttributeText = NSAttributedString(string: text as String,attributes: attributes)
     }
     
+    if let lineSpace = lineSpace{
+      let style = NSMutableParagraphStyle()
+      style.lineSpacing = lineSpace
+      let attributedText = NSMutableAttributedString(attributedString: usedAttributeText)
+      attributedText.addAttributes([.paragraphStyle: style], range: attributedText.range)
+      usedAttributeText = attributedText
+    }
+    
     var attributes = TextAttributes()
     attributes.attributeString = usedAttributeText
     attributes.maximumNumberOfLines = numberOfLines
@@ -178,3 +199,8 @@ public class TextAttributesHolder{
   
 }
 
+extension NSAttributedString{
+  var range: NSRange{
+    return NSRange(location: 0, length: length)
+  }
+}

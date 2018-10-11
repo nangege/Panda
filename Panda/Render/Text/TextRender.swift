@@ -44,7 +44,9 @@ final public class TextRender{
 
   private static let cache = RenderCache.strongToStrongObjects()
   
-  private static var cachePool = [RenderCache]()
+  private static var activeCache = cache
+  
+  private static var cachePool = [String: RenderCache]()
   
   public let textAttributes: TextAttributes
   public let textContext: TextContext
@@ -71,35 +73,40 @@ final public class TextRender{
     
     let key = TextKitRenderKey(attributes: attributes, constrainedSize: constrainedSize)
 
-    if let render = currentCache.object(forKey: key){
+    if let render = activeCache.object(forKey: key){
       return render
     }
     
     let render =  TextRender(textAttributes: attributes, constraintSize: constrainedSize)
     
-    currentCache.setObject(render, forKey: key)
+    activeCache.setObject(render, forKey: key)
     
     return render
-  }
-  
-  public class func cleanCache(){
-    cache.removeAllObjects()
   }
   
   public class func cleanCachePool(){
     cachePool.removeAll()
   }
   
-  public class func pushCache(){
-    cachePool.append(RenderCache.strongToStrongObjects())
+  public class func activeCache(_ identifier: String){
+    if let cache = cachePool[identifier]{
+      activeCache = cache
+    }else{
+      activeCache = createCache()
+      cachePool[identifier] = activeCache
+    }
   }
   
-  public class func popCache(){
-    _ = cachePool.popLast()
+  public class func cleanCache(_ identifier: String){
+    cachePool[identifier]?.removeAllObjects()
   }
   
-  private static var currentCache: RenderCache{
-    return cachePool.last ?? cache
+  public class func removeCache(_ identifier: String){
+    cachePool.removeValue(forKey: identifier)
+  }
+  
+  private static func createCache() -> RenderCache{
+    return RenderCache.strongToStrongObjects()
   }
   
   private func updateTextSize(){
