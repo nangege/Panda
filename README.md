@@ -16,7 +16,7 @@ Panda is combined by 3 different component:
 3. [Panda](https://github.com/nangege/Panda). Asynchronous display node.
 
 ## Why use Panda
-When it comes to  asynchronous render,many developr will think about [Texture](https://github.com/texturegroup/texture/), In facet, Panda learned a lot from [Texture](https://github.com/texturegroup/texture/), Panda's render process can be seen as a simplfy version of [Texture](https://github.com/texturegroup/texture/). But Panda does have it's advantages.Panda use 'AutoLayout' for frame caculating which make it easy to learn compared to Texture's Flexbox.Panda is more lightweighted and usage is more close to system's API,it just cost little to integration. So,if you love Swift,love AutoLayout ,want a high fps tableview and do't want to cost too much,Panda is for you. 
+When it comes to  asynchronous render,many developr will think about [Texture or AsyncDisplayKit](https://github.com/texturegroup/texture/), In facet, Panda learned a lot from [Texture](https://github.com/texturegroup/texture/), Panda's render process can be seen as a simplfy version of [Texture](https://github.com/texturegroup/texture/). But Panda does have it's advantages.Panda use `AutoLayout` for frame caculating which makes it easy to learn compared to Texture's Flexbox for iOS developer.Panda is more lightweighted and it's usage is more close to system's API,it just cost little to integration. So,if you love Swift,love AutoLayout ,want a high fps tableview and do't want to cost too much,Panda is for you. 
 
 
 ## Feature
@@ -151,7 +151,7 @@ For more information about how to use Carthage, please see its [project page](ht
   
 2. *Background thread usage*
  
-  if code if running in main thread ,frame and appearance for node  will update automaticlly.But if you want to layout from background and cache frame,  call `layoutIfNeeded()` ,then `var layoutValues: LayoutValues` will be what you want if your node hierarchy is not changed,then just pass it as a parameter for `apply(_ layout: LayoutValues)` in main thread.
+  if code if running in main thread ,frame and appearance for node  will update automaticlly.But if you want to layout from background and cache frame,  call `layoutIfNeeded()` ,then `var layoutValues: LayoutValues` will be what you want if your node hierarchy is not changed,then just pass it as a parameter to `apply(_ layout: LayoutValues)` in main thread.
 
 3. *Integrate existing UIView subclass*
 
@@ -176,8 +176,12 @@ For more information about how to use Carthage, please see its [project page](ht
    
  
 ## Tips
-1. The most import thing about performance is `TextRender` Cache so We need to control `TextRender` Cache accurately.You need to clean cache Manully.`TextRender` provide a default `RenderCache` to cache values. If you enter a tempoory ViewController, call `TextRender.pushCache()` to create a new cache, and `TextRender.popCache()` wnen exit from the ViewController to free cache.
+1. The most import thing about performance is `TextRender` Cache .We need to control `TextRender` Cache manually now .`TextRender` provide a default `TextRenderCache` to cache values. If you enter a tempoory ViewController, call `TextRender.activeCache()` to create a new cache, and call `TextRender.cleanCache(_ identifier)` wnen exit from the ViewController or all the cache is not needed.
 2. if allowed,set `fixedWidth = true ` for `TextNode` .`fixedWidth` means `TextNode`'s width is not determined by text Size, for example you have constraints like textNode.width = 100, or textNode.xSide = superNode.xSide and superNode's width is determined.This will avoid an extra creation of TextRender and avoid a text layout pass which has a big impact on performance. 
+
+## Todo
+1. Find a better way to control TextRender cache
+2. Complete StackLayout
 
 
 

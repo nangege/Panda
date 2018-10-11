@@ -40,13 +40,13 @@ final public class TextRender{
   /// which may degrade performance significantly sometimes
   /// textRender cache only cost small memory,we don't need to clean up even when we have memory issuse
   /// if no long in use ,clean cache manully
-  private typealias RenderCache = NSMapTable<TextKitRenderKey, TextRender>
+  private typealias TextRenderCache = NSMapTable<TextKitRenderKey, TextRender>
 
-  private static let cache = RenderCache.strongToStrongObjects()
+  private static let cache = TextRenderCache.strongToStrongObjects()
   
   private static var activeCache = cache
   
-  private static var cachePool = [String: RenderCache]()
+  private static var cachePool = [String: TextRenderCache]()
   
   public let textAttributes: TextAttributes
   public let textContext: TextContext
@@ -105,8 +105,8 @@ final public class TextRender{
     cachePool.removeValue(forKey: identifier)
   }
   
-  private static func createCache() -> RenderCache{
-    return RenderCache.strongToStrongObjects()
+  private static func createCache() -> TextRenderCache{
+    return TextRenderCache.strongToStrongObjects()
   }
   
   private func updateTextSize(){

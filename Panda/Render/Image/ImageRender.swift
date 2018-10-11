@@ -35,15 +35,22 @@ import UIKit
 
 final class ImageRender{
   
-//  static let cache = NSCache<ImageKey, UIImage>()
+  typealias ImageCache = NSCache<ImageKey, UIImage>
+  
+  /// just a temporary cache,most of the time,user should adjust image to the right size and manager cache using library like Kingfisher or SDWebImage
+  static var cache: ImageCache = {
+    let cache = ImageCache()
+    cache.countLimit = 50
+    return cache
+  }()
   
   class func imageForKey(_ key: ImageKey, isCancelled: CancelBlock) -> UIImage?{
-//    if let image = cache.object(forKey: key){
-//      return image
-//    }
+    if let image = cache.object(forKey: key){
+      return image
+    }
     
     if let image = contentForKey(key, isCancelled){
-      //cache.setObject(image, forKey: key)
+      cache.setObject(image, forKey: key)
       return image
     }
     

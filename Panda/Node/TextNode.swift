@@ -39,8 +39,6 @@ open class TextNode: ControlNode,TextRenderable {
   
   public private(set) lazy var textHolder = TextAttributesHolder(self)
   
-  public var highlightedTapAction: TextTapAction?
-  
   public func textDidUpdate(for attribute: AnyKeyPath) {
     if attribute == \TextRenderable.textColor{
       setNeedsDisplay()
