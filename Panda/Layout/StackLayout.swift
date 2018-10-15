@@ -301,7 +301,7 @@ class StackLayoutDistributionArrangement: StackLayoutArrangement{
   
   func resetFillEffect(){
     
-    (items as [Layoutable]).traverse { (preNode, currentNode) -> (LayoutConstraint) in
+    items.traverse { (preNode, currentNode) -> (LayoutConstraint) in
       var multiply: CGFloat = 1
       if distribution == .fillProportionally{
         let size1 = preNode.itemIntrinsicContentSize
@@ -334,11 +334,11 @@ class StackLayoutDistributionArrangement: StackLayoutArrangement{
     if axis == .horizontal{
       items.first!.left == guardView.left
       items.last!.right == guardView.right
-      (items as [Layoutable]).space(space,axis:.horizontal)
+      items.space(space,axis:.horizontal)
     }else{
       items.first!.top == guardView.top
       items.last!.bottom == guardView.bottom
-      (items as [Layoutable]).space(space,axis:.vertical)
+      items.space(space,axis:.vertical)
     }
   }
   
