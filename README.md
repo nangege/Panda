@@ -26,6 +26,9 @@ When it comes to  asynchronous render,many developr will think about [Texture or
 - [x] High performance
 - [x] Pure Swift implement
 
+## Demo
+   visit [PandaDemo](https://github.com/nangege/PandaDemo)   for a full demonstration
+
 ## Requirements
 - iOS 8.0+
 - Swift 4.2
@@ -172,7 +175,7 @@ For more information about how to use Carthage, please see its [project page](ht
 4. *Layout* 
    
    visit [Layoutable](https://github.com/nangege/Layoutable) for more about Layout API    
-   visit [PandaDemo](https://github.com/nangege/PandaDemo)   for a full demonstration
+
    
  
 ## Tips
