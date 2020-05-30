@@ -35,44 +35,7 @@ import Foundation
 
 public protocol TextRenderable: class {
   var textHolder: TextAttributesHolder{ get }
-  func textDidUpdate(for attribute: AnyKeyPath)
-}
-
-extension TextRenderable{
-  public var text: String{
-    set{ textHolder.text = newValue }
-    get{ return textHolder.text}
-  }
-  
-  public var attributeText: NSAttributedString?{
-    set{ textHolder.attributeText = newValue}
-    get{ return textHolder.attributeText}
-  }
-  
-  public var textColor: UIColor{
-    set{ textHolder.textColor = newValue }
-    get{ return textHolder.textColor }
-  }
-  
-  public var font: UIFont{
-    set{ textHolder.font = newValue}
-    get{ return textHolder.font }
-  }
-  
-  public var numberOfLines: Int{
-    set{ textHolder.numberOfLines = newValue }
-    get{ return textHolder.numberOfLines}
-  }
-  
-  public var truncationMode: NSLineBreakMode{
-    set{ textHolder.truncationMode = newValue }
-    get{ return textHolder.truncationMode}
-  }
-  
-  public var lineSpace: CGFloat?{
-    set{ textHolder.lineSpace = newValue }
-    get{ return textHolder.lineSpace}
-  }
+  func attributeUpdate(affectSize : Bool)
 }
 
 public class TextAttributesHolder{
@@ -83,67 +46,67 @@ public class TextAttributesHolder{
     self.render = render
   }
   
-  var text: String = ""{
+  public var text: String = ""{
     didSet{
       useAttributedText = false
       if text != oldValue{
-        render?.textDidUpdate(for: \TextRenderable.text)
+        render?.attributeUpdate(affectSize: true)
       }
     }
   }
   
-  var attributeText: NSAttributedString?{
+  public var attributeText: NSAttributedString?{
     didSet{
       useAttributedText = true
       if attributeText != oldValue{
-        render?.textDidUpdate(for: \TextRenderable.attributeText)
+        render?.attributeUpdate(affectSize: true)
       }
     }
   }
   
-  var textColor = UIColor.black{
+  public var textColor = UIColor.black{
     didSet{
       if oldValue != textColor{
-        render?.textDidUpdate(for: \TextRenderable.textColor)
+        render?.attributeUpdate(affectSize: false)
       }
     }
   }
   
-  var font = UIFont.systemFont(ofSize: 17){
+  public var font = UIFont.systemFont(ofSize: 17){
     didSet{
       if oldValue != font{
-        render?.textDidUpdate(for: \TextRenderable.font)
+        render?.attributeUpdate(affectSize: true)
       }
     }
   }
   
-  var numberOfLines = 1{
+  public var numberOfLines = 1{
     didSet{
       if oldValue != numberOfLines{
-        render?.textDidUpdate(for: \TextRenderable.numberOfLines)
+        render?.attributeUpdate(affectSize: true)
       }
     }
   }
   
-  var lineSpace: CGFloat?{
+  public var lineSpace: CGFloat?{
     didSet{
       if oldValue != lineSpace{
-        render?.textDidUpdate(for: \TextRenderable.lineSpace)
+        render?.attributeUpdate(affectSize: true)
       }
     }
   }
   
-  var truncationMode: NSLineBreakMode = .byTruncatingTail{
+  public var truncationMode: NSLineBreakMode = .byTruncatingTail{
     didSet{
       if oldValue != truncationMode{
-        render?.textDidUpdate(for: \TextRenderable.truncationMode)
+        render?.attributeUpdate(affectSize: true)
       }
     }
   }
   
-  var useAttributedText = false
+  public var useAttributedText = false
   
-  var itemIntrinsicContentSize: CGSize{
+  public var itemIntrinsicContentSize: CGSize{
     
     if textAttributes.attributeString.length == 0{
       return .zero

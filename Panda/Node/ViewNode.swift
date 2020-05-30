@@ -230,7 +230,7 @@ open class ViewNode: Layoutable {
   }
   
   open func removeSubnode(_ node: ViewNode){
-    if let index = subnodes.index(of: node){
+    if let index = subnodes.firstIndex(of: node){
       node.superNode = nil
       subnodes.remove(at: index)
       node.recursivelyReset(from: node)
@@ -331,11 +331,11 @@ open class ViewNode: Layoutable {
 extension ViewNode: Hashable{
 
   public static func ==(lhs: ViewNode, rhs: ViewNode) -> Bool {
-    return lhs.hashValue == rhs.hashValue
+    return lhs === rhs
   }
-
-  public var hashValue: Int{
-    return ObjectIdentifier(self).hashValue
+  
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(ObjectIdentifier(self))
   }
 }
 

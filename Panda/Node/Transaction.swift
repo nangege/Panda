@@ -35,8 +35,8 @@ import Foundation
 
 func synchronized(lock: Any, closure: () -> ()) {
   objc_sync_enter(lock)
+  defer { objc_sync_exit(lock) }
   closure()
-  objc_sync_exit(lock)
 }
 
 protocol RunloopObserver: Hashable{
@@ -59,8 +59,8 @@ final class Transaction{
   private static let StartObserver: () = {
     let runLoop = RunLoop.main.getCFRunLoop()
     let activity: CFRunLoopActivity = [.beforeWaiting,.exit]
-    var mutableSelf = Transaction.self
-    var context = CFRunLoopObserverContext(version: 0, info: &mutableSelf, retain: nil, release: nil, copyDescription: nil)
+    
+    var context = CFRunLoopObserverContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
     let observer =  CFRunLoopObserverCreate(kCFAllocatorDefault, activity.rawValue, true, 0, { (observer, activity, _) in
       
       synchronized(lock: Transaction.observerSet){

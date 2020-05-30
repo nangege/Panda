@@ -35,15 +35,16 @@ import Layoutable
 
 public typealias TextTapAction = (NSRange) -> ()
 
-open class TextNode: ControlNode,TextRenderable {
+@dynamicMemberLookup
+open class TextNode: ControlNode, TextRenderable {
   
   public private(set) lazy var textHolder = TextAttributesHolder(self)
   
-  public func textDidUpdate(for attribute: AnyKeyPath) {
-    if attribute == \TextRenderable.textColor{
-      setNeedsDisplay()
-    }else{
+  public func attributeUpdate(affectSize: Bool) {
+    if affectSize {
       invalidateIntrinsicContentSize()
+      setNeedsDisplay()
+    } else {
       setNeedsDisplay()
     }
   }
@@ -53,13 +54,19 @@ open class TextNode: ControlNode,TextRenderable {
   }
   
   override open func contentSizeFor(maxWidth: CGFloat) -> CGSize {
-    
-    if numberOfLines == 1{ return InvaidIntrinsicSize }
+    if self.numberOfLines == 1{ return InvaidIntrinsicSize }
     
     return textHolder.sizeFor(maxWidth: maxWidth)
   }
   
   override open func drawContent(in context: CGContext) {
     textHolder.render(for: bounds).drawInContext(context, bounds: bounds)
+  }
+}
+
+extension TextNode{
+  public subscript<T>(dynamicMember keyPath: ReferenceWritableKeyPath<TextAttributesHolder, T>) -> T {
+    get{ textHolder[keyPath: keyPath] }
+    set { textHolder[keyPath: keyPath] = newValue }
   }
 }
