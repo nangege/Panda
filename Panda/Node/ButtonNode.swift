@@ -280,10 +280,6 @@ struct StatePicker<T> {
   
 }
 
-extension UIControl.State: Hashable{
-  public var hashValue: Int{
-    return Int(rawValue)
-  }
-}
+extension UIControl.State: Hashable{}
 
 

@@ -141,7 +141,7 @@ public class TextAttributesHolder{
     }else{
       let attributes:[NSAttributedString.Key: Any] = [.font:font,
                                                       .foregroundColor: textColor]
-      usedAttributeText = NSAttributedString(string: text as String,attributes: attributes)
+      usedAttributeText = NSAttributedString(string: text as String, attributes: attributes)
     }
     
     if let lineSpace = lineSpace{
