@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Cassowary",
+        "repositoryURL": "git@github.com:nangege/Cassowary.git",
+        "state": {
+          "branch": "master",
+          "revision": "c5c93c28853a56bc484fa59696e9d0ee80ec9d0e",
+          "version": null
+        }
+      },
+      {
+        "package": "Layoutable",
+        "repositoryURL": "git@github.com:nangege/Layoutable.git",
+        "state": {
+          "branch": "master",
+          "revision": "b4e57575650ef917490d6465f532737e97447889",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

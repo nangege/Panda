@@ -8,6 +8,7 @@
 
 import Foundation
 import Layoutable
+import UIKit
 
 extension CGSize{
   /// scale self and keep aspectRatio to fite size

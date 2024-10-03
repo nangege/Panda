@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreGraphics
+import UIKit
 
 public protocol ImageProcessor {
   func process(image: UIImage) -> UIImage

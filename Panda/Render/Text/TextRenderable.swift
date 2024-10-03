@@ -32,6 +32,7 @@
 /// THE SOFTWARE.
 
 import Foundation
+import UIKit
 
 public protocol TextRenderable: class {
   var textHolder: TextAttributesHolder{ get }
