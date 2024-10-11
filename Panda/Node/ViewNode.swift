@@ -311,6 +311,11 @@ open class ViewNode: Layoutable {
     
     let size = layer.bounds.size
     let scale = UIScreen.main.scale
+    
+    if size.width == 0 || size.height == 0 {
+      return nil
+    }
+    
     UIGraphicsBeginImageContextWithOptions(size, false, scale)
     defer { UIGraphicsEndImageContext() }
     

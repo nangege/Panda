@@ -127,7 +127,7 @@ open class StackLayoutNode: ViewNode{
   }
   
   public func removeArrangedSubnode(_ node: ViewNode){
-    if let index = arrangedSubnodes.index(of: node){
+    if let index = arrangedSubnodes.firstIndex(of: node){
       arrangedSubnodes.remove(at: index)
     }
     aligmentArrangment.removeItem(node)
@@ -180,7 +180,7 @@ class StackLayoutArrangement{
   }
   
   func removeItem(_ node: ViewNode){
-    if let index = items.index(of: node){
+    if let index = items.firstIndex(of: node){
       items.remove(at: index)
     }
   }
@@ -235,9 +235,10 @@ class StackLayoutAlignmentArrangement: StackLayoutArrangement{
     }
     
     func updateFirstAttribute(for node: ViewNode){
+      guard let canvas = canvas else { return }
       let attribute = firstAttribute
       let anchor = Anchor(item: node, attribute: attribute)
-      let anchor2 = Anchor(item: canvas!, attribute: attribute)
+      let anchor2 = Anchor(item: canvas, attribute: attribute)
       var relation: LayoutRelation = .equal
       switch aligment{
       case .fill: relation = .equal
@@ -251,9 +252,10 @@ class StackLayoutAlignmentArrangement: StackLayoutArrangement{
     }
     
     func updateSecondAttribute(for node: ViewNode){
+      guard let canvas = canvas else { return }
       let attribute = secondAttribute
       let anchor = Anchor(item: node, attribute: attribute)
-      let anchor2 = Anchor(item: canvas!, attribute: attribute)
+      let anchor2 = Anchor(item: canvas, attribute: attribute)
       var relation: LayoutRelation = .equal
       switch aligment{
       case .fill: relation = .equal
@@ -329,15 +331,17 @@ class StackLayoutDistributionArrangement: StackLayoutArrangement{
       return
     }
     
-    let guardView = canvas!
-    
+    guard let guardView = canvas else { return }
+    guard let firstItem = items.first else { return }
+    guard let lastItem = items.first else { return }
+
     if axis == .horizontal{
-      items.first!.left == guardView.left
-      items.last!.right == guardView.right
+      firstItem.left == guardView.left
+      lastItem.right == guardView.right
       items.space(space,axis:.horizontal)
     }else{
-      items.first!.top == guardView.top
-      items.last!.bottom == guardView.bottom
+      firstItem.top == guardView.top
+      lastItem.bottom == guardView.bottom
       items.space(space,axis:.vertical)
     }
   }

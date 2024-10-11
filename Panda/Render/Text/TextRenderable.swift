@@ -34,7 +34,7 @@
 import Foundation
 import UIKit
 
-public protocol TextRenderable: class {
+public protocol TextRenderable: AnyObject {
   var textHolder: TextAttributesHolder{ get }
   func attributeUpdate(affectSize : Bool)
 }
