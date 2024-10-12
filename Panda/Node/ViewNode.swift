@@ -113,7 +113,7 @@ open class ViewNode: Layoutable {
     }
   }
   
-  public var layer: CALayer{
+  public var layer: CALayer {
     return view.layer
   }
   
@@ -242,23 +242,29 @@ open class ViewNode: Layoutable {
   }
   
   open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool{
-    return (view as! ProxyView).forwardGestureRecognizerShouldBegin(gestureRecognizer)
+    guard let view = view as? ProxyView else { return  false }
+    return view.forwardGestureRecognizerShouldBegin(gestureRecognizer)
   }
   
   open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-    (view as! ProxyView).forwardTouchesBegan(touches, with: event)
+    guard let view = view as? ProxyView else { return }
+    view.forwardTouchesBegan(touches, with: event)
   }
   
   open func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?){
-    (view as! ProxyView).forwardTouchesMoved(touches, with: event)
+    guard let view = view as? ProxyView else { return }
+    view.forwardTouchesMoved(touches, with: event)
   }
   
   open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?){
-    (view as! ProxyView).forwardTouchesEnded(touches, with: event)
+    guard let view = view as? ProxyView else { return }
+    view.forwardTouchesEnded(touches, with: event)
   }
   
   open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?){
-    (view as! ProxyView).forwardTouchesCancelled(touches, with: event)
+    guard let view = view as? ProxyView else { return }
+
+    view.forwardTouchesCancelled(touches, with: event)
   }
   
   open func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView?{
